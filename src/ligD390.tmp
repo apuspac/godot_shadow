@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://bsag2o1g8aovo"]
+
+[ext_resource type="Script" path="res://src/light_test.gd" id="1_ixjau"]
+[ext_resource type="Script" path="res://src/PointLight2D_right.gd" id="1_nvrjq"]
+[ext_resource type="PackedScene" uid="uid://727ln4a50ge" path="res://src/player.tscn" id="2_75vxp"]
+[ext_resource type="PackedScene" uid="uid://cdd0jbcho7tbd" path="res://src/test_map.tscn" id="3_ntt3d"]
+[ext_resource type="PackedScene" uid="uid://dky4isbqap7eq" path="res://src/move_test.tscn" id="5_hkhvu"]
+[ext_resource type="Script" path="res://src/RayCast2D.gd" id="5_s8qd7"]
+[ext_resource type="PackedScene" uid="uid://oy3bh15tx81v" path="res://src/water.tscn" id="7_dheuu"]
+[ext_resource type="PackedScene" uid="uid://dfxia4yhqfq1j" path="res://src/bounce.tscn" id="8_dmh03"]
+
+[sub_resource type="Gradient" id="Gradient_wadfp"]
+offsets = PackedFloat32Array(0.152439, 0.670732)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sg107"]
+gradient = SubResource("Gradient_wadfp")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_ukweg"]
+offsets = PackedFloat32Array(0, 0.687943)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_28rol"]
+gradient = SubResource("Gradient_ukweg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1vy7k"]
+polygon = PackedVector2Array(139, 139, 133, 208, 178, 212, 180, 131)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l1p21"]
+closed = false
+cull_mode = 2
+polygon = PackedVector2Array(-3, 39, -2, 7, 22, 8, 22, 0, 28, 0, 35, 3, 46, 8, 50, 11, 54, 16, 54, 44, 50, 56, 46, 56, 10, 56, -1, 44, -3, 39)
+
+[node name="light_test" type="Node2D"]
+script = ExtResource("1_ixjau")
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -2269.0
+offset_top = -1750.0
+offset_right = 4614.0
+offset_bottom = 2034.0
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="PointLight2D_left" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-252, 141)
+scale = Vector2(13.6813, 7.73871)
+energy = 4.3
+range_z_max = 2024
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_sg107")
+
+[node name="PointLight2D_right" type="PointLight2D" parent="."]
+position = Vector2(62, -199)
+scale = Vector2(8.73151, 5.33358)
+color = Color(1, 0.913725, 0.788235, 1)
+energy = 4.86
+shadow_enabled = true
+shadow_color = Color(0.666667, 0, 0.364706, 0.890196)
+texture = SubResource("GradientTexture2D_28rol")
+texture_scale = 8.72
+script = ExtResource("1_nvrjq")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+position = Vector2(0, -1.52588e-05)
+energy = 1.14
+shadow_enabled = true
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2(312.305, 20)
+occluder = SubResource("OccluderPolygon2D_1vy7k")
+occluder_light_mask = 2
+
+[node name="test_map" parent="." instance=ExtResource("3_ntt3d")]
+
+[node name="Player2" parent="." instance=ExtResource("2_75vxp")]
+position = Vector2(227, 45)
+collision_mask = 14
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player2"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Player2"]
+position = Vector2(-25, -24)
+occluder = SubResource("OccluderPolygon2D_l1p21")
+
+[node name="RayCast2D" type="RayCast2D" parent="Player2"]
+rotation = 2.55691
+target_position = Vector2(6, -552)
+collision_mask = 0
+collide_with_areas = true
+script = ExtResource("5_s8qd7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(227, 45)
+
+[node name="move_test" parent="." instance=ExtResource("5_hkhvu")]
+position = Vector2(1619, -7)
+
+[node name="water" parent="." instance=ExtResource("7_dheuu")]
+position = Vector2(1235, -80)
+
+[node name="water2" parent="." instance=ExtResource("7_dheuu")]
+position = Vector2(970, -77)
+
+[node name="bounce" parent="." instance=ExtResource("8_dmh03")]
+position = Vector2(834, 253)
+
+[connection signal="send_light_position" from="PointLight2D_right" to="Player2" method="_on_point_light_2d_right_send_light_position"]
+[connection signal="notice_shadow_color" from="Player2" to="PointLight2D_right" method="_on_player_2_notice_shadow_color"]
+[connection signal="notice_shadow_color" from="Player2" to="Player2/RayCast2D" method="_on_player_2_notice_shadow_color"]
+[connection signal="notice_collision_ability_move" from="Player2/RayCast2D" to="move_test" method="_on_ray_cast_2d_notice_collision_ability_move"]
+[connection signal="notice_collision_ability_water" from="Player2/RayCast2D" to="water" method="_on_ray_cast_2d_notice_collision_ability_water"]
+[connection signal="notice_collision_ability_water" from="Player2/RayCast2D" to="water2" method="_on_ray_cast_2d_notice_collision_ability_water"]
+[connection signal="notice_water_area" from="water" to="Player2" method="_on_water_notice_water_area"]
+[connection signal="notice_water_area" from="water2" to="Player2" method="_on_water_2_notice_water_area"]
