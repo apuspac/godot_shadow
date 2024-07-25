@@ -81,3 +81,7 @@ Right={
 2d_physics/layer_5="shield"
 2d_physics/layer_6="breakable wall"
 2d_physics/layer_7="one way wall"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
