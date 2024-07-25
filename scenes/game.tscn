@@ -85,6 +85,7 @@ sources/0 = SubResource("TileSetAtlasSource_firtc")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -18)
+position_smoothing_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_osg4o")
