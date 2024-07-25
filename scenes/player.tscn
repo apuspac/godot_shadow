@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://lo6pmqp5fljt"]
+[gd_scene load_steps=5 format=3 uid="uid://lo6pmqp5fljt"]
+
+[ext_resource type="Texture2D" uid="uid://pk2lwqeaqicc" path="res://assets/sprites/player_sprite_sheet_.png" id="1_g3t70"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itkfn"]
+atlas = ExtResource("1_g3t70")
+region = Rect2(0, 0, 43, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34y32"]
+atlas = ExtResource("1_g3t70")
+region = Rect2(43, 0, 43, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rn5f4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itkfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34y32")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -29)
+sprite_frames = SubResource("SpriteFrames_rn5f4")
+animation = &"idle"
+frame_progress = 0.0496292
