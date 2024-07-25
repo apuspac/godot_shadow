@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://lo6pmqp5fljt"]
+[gd_scene load_steps=6 format=3 uid="uid://lo6pmqp5fljt"]
 
 [ext_resource type="Texture2D" uid="uid://pk2lwqeaqicc" path="res://assets/sprites/player_sprite_sheet_.png" id="1_g3t70"]
 
@@ -24,6 +24,9 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5a8uk"]
+radius = 9.0
+
 [node name="Player" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -31,3 +34,7 @@ position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_rn5f4")
 animation = &"idle"
 frame_progress = 0.0496292
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -9)
+shape = SubResource("CircleShape2D_5a8uk")
