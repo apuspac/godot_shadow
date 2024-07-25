@@ -33,6 +33,7 @@ radius = 9.0
 position = Vector2(0, -29)
 sprite_frames = SubResource("SpriteFrames_rn5f4")
 animation = &"idle"
+autoplay = "idle"
 frame = 1
 frame_progress = 0.784332
 
