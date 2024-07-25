@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c0li5wtektwmu"]
+[gd_scene load_steps=2 format=3 uid="uid://c0li5wtektwmu"]
+
+[ext_resource type="Texture2D" uid="uid://ybbrudeg0yol" path="res://assets/logo_vertical_monochrome_dark.png" id="1_kdpv8"]
 
 [node name="Splash" type="Control"]
 layout_mode = 3
@@ -16,3 +18,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(320, 192)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_kdpv8")
