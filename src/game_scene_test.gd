@@ -23,9 +23,3 @@ func pause_menu():
 
 func reset_scene():
 	get_tree().reload_current_scene() 
-
-
-#func _on_button_button_down():
-	#pause_panel.hide()
-	#get_tree().paused = false
-	#
