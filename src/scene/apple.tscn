@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c15tfbw8kk01i"]
+[gd_scene load_steps=7 format=3 uid="uid://c15tfbw8kk01i"]
 
-[ext_resource type="Script" path="res://src/apple.gd" id="1_dbngi"]
+[ext_resource type="Script" path="res://src/script/apple.gd" id="1_dbngi"]
 [ext_resource type="Texture2D" uid="uid://yxre806ndm7p" path="res://assets/tile.png" id="1_rjmlq"]
+[ext_resource type="AudioStream" uid="uid://bt3thfs8g4c6o" path="res://assets/brackeys_sample/sounds/coin.wav" id="3_7t54d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wqwge"]
 atlas = ExtResource("1_rjmlq")
@@ -31,5 +32,8 @@ sprite_frames = SubResource("SpriteFrames_ai21i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_mbmxb")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7t54d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,5 +1,56 @@
-[gd_scene format=3 uid="uid://bo4llp7pn64xr"]
+[gd_scene load_steps=8 format=3 uid="uid://bo4llp7pn64xr"]
+
+[ext_resource type="Texture2D" uid="uid://bu4he0846gh8k" path="res://assets/player.png" id="1_g7qry"]
+[ext_resource type="Script" path="res://src/script/enemy.gd" id="1_her1s"]
+[ext_resource type="PackedScene" uid="uid://c02rktfdpxtms" path="res://src/scene/killzone.tscn" id="2_hk3wx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjs1h"]
+atlas = ExtResource("1_g7qry")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe5pp"]
+atlas = ExtResource("1_g7qry")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40yy0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjs1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe5pp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wi0o"]
+size = Vector2(56, 56)
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_her1s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_40yy0")
+frame = 1
+frame_progress = 0.989391
+flip_h = true
+
+[node name="Killzone" parent="." instance=ExtResource("2_hk3wx")]
+position = Vector2(202, 59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-202, -59)
+shape = SubResource("RectangleShape2D_5wi0o")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(34, 0)
+collision_mask = 30
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-34, 0)
+collision_mask = 30
+
+[connection signal="enter_kill_zone" from="Killzone" to="." method="_on_killzone_enter_kill_zone"]

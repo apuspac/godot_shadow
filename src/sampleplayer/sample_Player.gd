@@ -12,10 +12,6 @@ const MAP_OBJ = preload("res://src/scene/map.tscn")
 @onready var player_light_occluder: LightOccluder2D = $LightOccluder2D
 
 
-
-
-
-
 # global var
 const SPEED: float = 300.0
 const JUMP_VELOCITY: float = -700.0
