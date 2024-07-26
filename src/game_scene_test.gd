@@ -1,11 +1,31 @@
 extends Node2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+@onready var pause_panel = $Camera2D/Pause_panel
+var paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if Input.is_action_just_pressed("Escape"):
+		pause_menu()
+	if Input.is_action_just_pressed("Reset"):
+		reset_scene()
+
+
+func pause_menu():
+	if paused:
+		pause_panel.hide()
+		Engine.time_scale = 1
+	else:
+		pause_panel.show()
+		Engine.time_scale = 0
+	
+	paused = !paused
+
+func reset_scene():
+	get_tree().reload_current_scene() 
+
+
+#func _on_button_button_down():
+	#pause_panel.hide()
+	#get_tree().paused = false
+	#
