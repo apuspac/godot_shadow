@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgry1ukkcgqoo"]
+
+[ext_resource type="PackedScene" uid="uid://lo6pmqp5fljt" path="res://scenes/player.tscn" id="1_ramj5"]
+[ext_resource type="Script" path="res://src/game_scene_test.gd" id="1_yio8n"]
+[ext_resource type="PackedScene" uid="uid://cdd0jbcho7tbd" path="res://src/player/test_map.tscn" id="2_13seg"]
+[ext_resource type="PackedScene" uid="uid://bftw4socxjx1y" path="res://src/scene/pause_panel.tscn" id="4_ema8v"]
+
+[node name="game_scene_test" type="Node2D"]
+script = ExtResource("1_yio8n")
+
+[node name="test_map" parent="." instance=ExtResource("2_13seg")]
+
+[node name="Player" parent="." instance=ExtResource("1_ramj5")]
+collision_mask = 30
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Pause_panel" parent="Camera2D" instance=ExtResource("4_ema8v")]
+visible = false
+offset_left = -26.0
+offset_top = -40.0
+offset_right = 14.0
+offset_bottom = 0.0
