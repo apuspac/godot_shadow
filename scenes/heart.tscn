@@ -70,12 +70,15 @@ animations = [{
 radius = 8.544
 
 [node name="Heart" type="Area2D"]
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_siu71")
 autoplay = "default"
-frame_progress = 0.379462
+frame_progress = 0.560005
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_nmrnt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
