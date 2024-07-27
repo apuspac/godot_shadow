@@ -19,7 +19,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Music="*res://src_nui/scene/music.tscn"
+Music="res://src_nui/scene/music.tscn"
+Global="*res://src/scene/global.tscn"
 
 [display]
 

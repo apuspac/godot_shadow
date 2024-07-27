@@ -1,5 +1,8 @@
 extends Control
 
+signal jump_level_select()
+signal jump_main_menu()
+
 @onready var main = $"../../"
 
 func _on_resume_pressed():
@@ -7,11 +10,11 @@ func _on_resume_pressed():
 
 
 func _on_level_select_pressed():
-	get_tree().change_scene_to_file("res://src/scene/level_select.tscn")
+	jump_level_select.emit()
 	
 
 func _on_main_menu_pressed():
-	get_tree().change_scene_to_file("res://src/scene/main_menu.tscn")
+	jump_main_menu.emit()
 
 	
 func _on_quit_pressed():
