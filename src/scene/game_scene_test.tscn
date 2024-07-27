@@ -1,22 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgry1ukkcgqoo"]
+[gd_scene load_steps=10 format=3 uid="uid://dgry1ukkcgqoo"]
 
 [ext_resource type="PackedScene" uid="uid://lo6pmqp5fljt" path="res://scenes/player.tscn" id="1_ramj5"]
-[ext_resource type="Script" path="res://src/game_scene_test.gd" id="1_yio8n"]
-[ext_resource type="PackedScene" uid="uid://cdd0jbcho7tbd" path="res://src/player/test_map.tscn" id="2_13seg"]
+[ext_resource type="Script" path="res://src/script/game_scene_test.gd" id="1_yio8n"]
+[ext_resource type="PackedScene" uid="uid://cdd0jbcho7tbd" path="res://src/sampleplayer/test_map.tscn" id="2_13seg"]
+[ext_resource type="Script" path="res://src/scene/GameManager.gd" id="2_tqwu5"]
 [ext_resource type="PackedScene" uid="uid://bftw4socxjx1y" path="res://src/scene/pause_panel.tscn" id="4_ema8v"]
+[ext_resource type="PackedScene" uid="uid://c15tfbw8kk01i" path="res://src/scene/apple.tscn" id="5_mauwb"]
+[ext_resource type="PackedScene" uid="uid://c02rktfdpxtms" path="res://src/scene/killzone.tscn" id="6_mbum0"]
+[ext_resource type="PackedScene" uid="uid://bo4llp7pn64xr" path="res://src/scene/enemy.tscn" id="7_vh12s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acp86"]
+size = Vector2(226, 29)
 
 [node name="game_scene_test" type="Node2D"]
 script = ExtResource("1_yio8n")
 
+[node name="GameManager" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_tqwu5")
+
+[node name="ScoreLabel" type="Label" parent="GameManager"]
+offset_left = -612.0
+offset_top = 6.0
+offset_right = -410.0
+offset_bottom = 110.0
+text = "RINGO.
+
+"
+
 [node name="test_map" parent="." instance=ExtResource("2_13seg")]
 
 [node name="Player" parent="." instance=ExtResource("1_ramj5")]
+z_index = 5
 collision_mask = 30
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 300
+limit_smoothed = true
 
 [node name="Pause_panel" parent="Camera2D" instance=ExtResource("4_ema8v")]
 visible = false
@@ -24,3 +47,33 @@ offset_left = -26.0
 offset_top = -40.0
 offset_right = 14.0
 offset_bottom = 0.0
+
+[node name="Killzone" parent="." instance=ExtResource("6_mbum0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-752, 187)
+shape = SubResource("RectangleShape2D_acp86")
+
+[node name="apple" type="Node2D" parent="."]
+
+[node name="apple" parent="apple" instance=ExtResource("5_mauwb")]
+position = Vector2(-219, 111)
+
+[node name="apple2" parent="apple" instance=ExtResource("5_mauwb")]
+position = Vector2(-307, 112)
+
+[node name="Enemy" parent="." instance=ExtResource("7_vh12s")]
+position = Vector2(-438, 108)
+
+[node name="Label" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Label"]
+offset_left = -252.0
+offset_top = -132.0
+offset_right = -50.0
+offset_bottom = -28.0
+text = "Space to jump.
+"
+
+[connection signal="enter_kill_zone" from="Killzone" to="Player" method="_on_killzone_enter_kill_zone"]
+[connection signal="collide_player" from="Enemy" to="Player" method="_on_enemy_collide_player"]

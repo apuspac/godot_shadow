@@ -11,11 +11,15 @@ config_version=5
 [application]
 
 config/name="UWAAAA"
-run/main_scene="res://src/light/light_test.tscn"
+run/main_scene="res://src/scene/game_scene_test.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+Music="*res://src/scene/music.tscn"
 
 [display]
 
@@ -82,11 +86,11 @@ Reset={
 2d_render/layer_2="wall"
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Wall"
-2d_physics/layer_3="Ladder"
-2d_physics/layer_4="climing wall"
-2d_physics/layer_5="shield"
-2d_physics/layer_6="breakable wall"
-2d_physics/layer_7="one way wall"
+2d_physics/layer_3="moveing"
+2d_physics/layer_4="water"
+2d_physics/layer_5="bounce"
+2d_physics/layer_6="item"
+2d_physics/layer_7="light"
 
 [rendering]
 

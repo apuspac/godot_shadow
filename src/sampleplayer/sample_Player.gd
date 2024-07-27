@@ -12,10 +12,6 @@ const MAP_OBJ = preload("res://src/scene/map.tscn")
 @onready var player_light_occluder: LightOccluder2D = $LightOccluder2D
 
 
-
-
-
-
 # global var
 const SPEED: float = 300.0
 const JUMP_VELOCITY: float = -700.0
@@ -38,9 +34,6 @@ func _process(delta: float) -> void:
 	change_visible_ray()
 	change_ray_color()
 
-	action_a_old(current_time)
-	action_s_old(current_time)
-
 func _physics_process(delta: float) -> void:
 	move_func(delta)
 	update_animation()
@@ -50,7 +43,8 @@ func _physics_process(delta: float) -> void:
 	update_raycast_position()
 
 func move_func(delta: float ) -> void:
-	# Add the gravity.
+	
+	# Timer for bouncing only at the moment of getting on.
 	if bounce_timer > 0:
 		bounce_timer -= delta
 	else:
@@ -112,22 +106,22 @@ func change_visible_ray():
 		player_light_occluder.visible = !player_light_occluder.visible
 		player_raycast.enabled = player_light_occluder.visible
 		
-		
-
-
-		print("A osaretanoda")
-
 
 func change_ray_color():
 	if Input.is_action_just_pressed("S"):
 
+		# Change the layer(collision_mask) of the raycast 
+		# so that the corresponding object fires
 		if shadow_color == 0:
 			player_raycast.collision_mask = 0
 		elif shadow_color == 1:
+			# move
 			player_raycast.collision_mask = 4
 		elif shadow_color == 2:
+			# water
 			player_raycast.collision_mask = 8
 		elif shadow_color == 3:
+			# bounce
 			player_raycast.collision_mask = 16
 		
 		notice_shadow_color.emit(shadow_color)
@@ -139,53 +133,9 @@ func change_ray_color():
 	if(shadow_color > 4):
 		shadow_color = 0
 
-
-
-
-
 func _on_point_light_2d_right_send_light_position(light_p:Vector2):
 	light_position = light_p
 
-
-
-
-
-
-
-var start_time: float = 0.0
-var held_time: float  = 0.0
-var holding_button: bool = false
-
-var start_time_s: float = 0.0
-var held_time_s: float = 0.0
-var holding_button_s: bool = false
-
-
-func action_a_old(current_time: int) -> void:
-	if Input.is_action_pressed("A"):
-		if not holding_button:
-			start_time = current_time
-			holding_button = true
-		else:
-			held_time = current_time - start_time
-	elif Input.is_action_just_released("A"):
-		if holding_button:
-			holding_button = false
-			delete_wall.emit(position, int(ceil(held_time) * 3))
-			held_time = 0.0
-
-func action_s_old(current_time):
-	if Input.is_action_pressed("S"):
-		if not holding_button_s:
-			start_time_s = current_time
-			holding_button_s = true
-		else:
-			held_time_s = current_time - start_time_s
-	elif Input.is_action_just_released("S"):
-		if holding_button_s:
-			holding_button_s = false
-			change_wall.emit(position, ability_direction_h, int(ceil(held_time_s)))
-			held_time_s = 0.0
 
 func water_area_process(inout: bool)-> void:
 	if(inout == true):
@@ -193,10 +143,6 @@ func water_area_process(inout: bool)-> void:
 		print("ukabu :", on_water)
 	else:
 		on_water = false
-		#if(velocity.y > 0):
-			#on_water_floating = 2
-		#else:
-			#on_water_floating = 1
 		print("ukabanai :", on_water)
 
 func bounce_area_process(inout: bool)-> void:
@@ -209,7 +155,6 @@ func _on_water_notice_water_area(inout: bool) -> void:
 
 func _on_water_2_notice_water_area(inout):
 	water_area_process(inout) # Replace with function body.
-
 
 func _on_bounce_notice_bounce_area(inout):
 	bounce_area_process(inout)
