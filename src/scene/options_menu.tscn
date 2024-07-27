@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx6p2p4n228r0"]
+[gd_scene load_steps=2 format=3 uid="uid://c8kxiiggv14i7"]
 
-[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_j31ht"]
+[ext_resource type="Script" path="res://scripts/options_menu.gd" id="1_lvgmo"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_j31ht")
+script = ExtResource("1_lvgmo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

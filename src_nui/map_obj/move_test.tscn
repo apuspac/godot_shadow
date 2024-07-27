@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dky4isbqap7eq"]
+
+[ext_resource type="Texture2D" uid="uid://cs3sstbwbjto4" path="res://icon.svg" id="1_5e6vd"]
+[ext_resource type="Script" path="res://src_nui/map_obj/move_test.gd" id="1_bnmdr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iejuw"]
+size = Vector2(123, 124)
+
+[sub_resource type="Animation" id="Animation_pisd0"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(500, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mh7g3"]
+_data = {
+"move": SubResource("Animation_pisd0")
+}
+
+[node name="move_test" type="Node2D"]
+script = ExtResource("1_bnmdr")
+
+[node name="move_test" type="AnimatableBody2D" parent="."]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="move_test"]
+texture = ExtResource("1_5e6vd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_test"]
+shape = SubResource("RectangleShape2D_iejuw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_test"]
+libraries = {
+"": SubResource("AnimationLibrary_mh7g3")
+}

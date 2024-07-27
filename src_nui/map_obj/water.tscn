@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://oy3bh15tx81v"]
+
+[ext_resource type="Script" path="res://src_nui/map_obj/water.gd" id="1_w5340"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt0kd"]
+size = Vector2(175, 163)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0pwk"]
+size = Vector2(175, 162)
+
+[node name="water" type="Node2D"]
+script = ExtResource("1_w5340")
+
+[node name="water_body" type="AnimatableBody2D" parent="."]
+collision_layer = 8
+
+[node name="ColorRect" type="ColorRect" parent="water_body"]
+offset_right = 175.0
+offset_bottom = 163.0
+color = Color(0.32549, 0.6, 0.898039, 0.694118)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_body"]
+position = Vector2(87.5, 81.5)
+shape = SubResource("RectangleShape2D_mt0kd")
+
+[node name="water_area" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_area"]
+position = Vector2(87.5, 81)
+shape = SubResource("RectangleShape2D_h0pwk")
+
+[connection signal="body_entered" from="water_area" to="." method="_on_water_area_body_entered"]
+[connection signal="body_exited" from="water_area" to="." method="_on_water_area_body_exited"]
