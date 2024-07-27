@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgi1p5hsqog2h"]
+
+[ext_resource type="Script" path="res://src_nui/script/pause_panel.gd" id="1_xoy2p"]
+
+[node name="Pause_panel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 297.0
+offset_bottom = 245.0
+script = ExtResource("1_xoy2p")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "return "
+
+[node name="level select" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="main menu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/level select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/main menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
