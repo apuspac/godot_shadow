@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://oy3bh15tx81v"]
 
-[ext_resource type="Script" path="res://src/map_obj/water.gd" id="1_w5340"]
+[ext_resource type="Script" path="res://src_nui/map_obj/water.gd" id="1_w5340"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt0kd"]
 size = Vector2(175, 163)

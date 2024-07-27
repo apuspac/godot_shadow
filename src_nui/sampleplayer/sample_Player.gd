@@ -5,7 +5,7 @@ signal change_wall(pos:Vector2, flip_h:bool, time:int)
 signal notice_shadow_color(color:int)
 
 
-const MAP_OBJ = preload("res://src/scene/map.tscn")
+const MAP_OBJ = preload("res://src_nui/scene/map.tscn")
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_raycast: RayCast2D = $RayCast2D

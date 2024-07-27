@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://bsag2o1g8aovo"]
 
-[ext_resource type="Script" path="res://src/light/light_test.gd" id="1_ixjau"]
-[ext_resource type="Script" path="res://src/light/PointLight2D_right.gd" id="1_nvrjq"]
-[ext_resource type="PackedScene" uid="uid://727ln4a50ge" path="res://src/sampleplayer/sample_player.tscn" id="2_75vxp"]
-[ext_resource type="PackedScene" uid="uid://cdd0jbcho7tbd" path="res://src/sampleplayer/test_map.tscn" id="3_ntt3d"]
-[ext_resource type="PackedScene" uid="uid://dky4isbqap7eq" path="res://src/map_obj/move_test.tscn" id="5_hkhvu"]
-[ext_resource type="Script" path="res://src/sampleplayer/RayCast2D.gd" id="5_s8qd7"]
-[ext_resource type="PackedScene" uid="uid://oy3bh15tx81v" path="res://src/map_obj/water.tscn" id="7_dheuu"]
-[ext_resource type="PackedScene" uid="uid://dfxia4yhqfq1j" path="res://src/map_obj/bounce.tscn" id="8_dmh03"]
+[ext_resource type="Script" path="res://src_nui/light/light_test.gd" id="1_ixjau"]
+[ext_resource type="Script" path="res://src_nui/light/PointLight2D_right.gd" id="1_nvrjq"]
+[ext_resource type="PackedScene" uid="uid://727ln4a50ge" path="res://src_nui/sampleplayer/sample_player.tscn" id="2_75vxp"]
+[ext_resource type="PackedScene" uid="uid://cdd0jbcho7tbd" path="res://src_nui/sampleplayer/test_map.tscn" id="3_ntt3d"]
+[ext_resource type="PackedScene" uid="uid://dky4isbqap7eq" path="res://src_nui/map_obj/move_test.tscn" id="5_hkhvu"]
+[ext_resource type="Script" path="res://src_nui/sampleplayer/RayCast2D.gd" id="5_s8qd7"]
+[ext_resource type="PackedScene" uid="uid://oy3bh15tx81v" path="res://src_nui/map_obj/water.tscn" id="7_dheuu"]
+[ext_resource type="PackedScene" uid="uid://dfxia4yhqfq1j" path="res://src_nui/map_obj/bounce.tscn" id="8_dmh03"]
 
 [sub_resource type="Gradient" id="Gradient_wadfp"]
 offsets = PackedFloat32Array(0.152439, 0.670732)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://v50rtjy0qcd0"]
 
-[ext_resource type="Script" path="res://src/script/control2.gd" id="1_2dy6x"]
+[ext_resource type="Script" path="res://src_nui/script/control2.gd" id="1_2dy6x"]
 
 [sub_resource type="Curve" id="Curve_kgruk"]
 _data = [Vector2(0.569444, 0.543736), 0.0, 0.0, 0, 0]

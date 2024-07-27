@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://dgry1ukkcgqoo"]
 
 [ext_resource type="PackedScene" uid="uid://lo6pmqp5fljt" path="res://scenes/player.tscn" id="1_ramj5"]
-[ext_resource type="Script" path="res://src/script/game_scene_test.gd" id="1_yio8n"]
-[ext_resource type="PackedScene" uid="uid://cdd0jbcho7tbd" path="res://src/sampleplayer/test_map.tscn" id="2_13seg"]
-[ext_resource type="Script" path="res://src/scene/GameManager.gd" id="2_tqwu5"]
-[ext_resource type="PackedScene" uid="uid://bftw4socxjx1y" path="res://src/scene/pause_panel.tscn" id="4_ema8v"]
-[ext_resource type="PackedScene" uid="uid://c15tfbw8kk01i" path="res://src/scene/apple.tscn" id="5_mauwb"]
-[ext_resource type="PackedScene" uid="uid://c02rktfdpxtms" path="res://src/scene/killzone.tscn" id="6_mbum0"]
-[ext_resource type="PackedScene" uid="uid://bo4llp7pn64xr" path="res://src/scene/enemy.tscn" id="7_vh12s"]
+[ext_resource type="Script" path="res://src_nui/script/game_scene_test.gd" id="1_yio8n"]
+[ext_resource type="PackedScene" uid="uid://cdd0jbcho7tbd" path="res://src_nui/sampleplayer/test_map.tscn" id="2_13seg"]
+[ext_resource type="Script" path="res://src_nui/scene/GameManager.gd" id="2_tqwu5"]
+[ext_resource type="PackedScene" uid="uid://bftw4socxjx1y" path="res://src_nui/scene/pause_panel.tscn" id="4_ema8v"]
+[ext_resource type="PackedScene" uid="uid://c15tfbw8kk01i" path="res://src_nui/scene/apple.tscn" id="5_mauwb"]
+[ext_resource type="PackedScene" uid="uid://c02rktfdpxtms" path="res://src_nui/scene/killzone.tscn" id="6_mbum0"]
+[ext_resource type="PackedScene" uid="uid://bo4llp7pn64xr" path="res://src_nui/scene/enemy.tscn" id="7_vh12s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_acp86"]
 size = Vector2(226, 29)

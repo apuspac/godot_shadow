@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bo4llp7pn64xr"]
 
 [ext_resource type="Texture2D" uid="uid://bu4he0846gh8k" path="res://assets/player.png" id="1_g7qry"]
-[ext_resource type="Script" path="res://src/script/enemy.gd" id="1_her1s"]
-[ext_resource type="PackedScene" uid="uid://c02rktfdpxtms" path="res://src/scene/killzone.tscn" id="2_hk3wx"]
+[ext_resource type="Script" path="res://src_nui/script/enemy.gd" id="1_her1s"]
+[ext_resource type="PackedScene" uid="uid://c02rktfdpxtms" path="res://src_nui/scene/killzone.tscn" id="2_hk3wx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hjs1h"]
 atlas = ExtResource("1_g7qry")
