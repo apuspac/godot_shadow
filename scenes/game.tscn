@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://43msbxh26407"]
+[gd_scene load_steps=11 format=3 uid="uid://43msbxh26407"]
 
 [ext_resource type="PackedScene" uid="uid://lo6pmqp5fljt" path="res://scenes/player.tscn" id="1_cxuxa"]
 [ext_resource type="Texture2D" uid="uid://cfi12mq0dlhb4" path="res://assets/sprites/world_tileset.png" id="2_cleqr"]
+[ext_resource type="PackedScene" uid="uid://dk6e3la81fpqv" path="res://scenes/platform.tscn" id="3_5mpup"]
+[ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://scenes/heart.tscn" id="4_708tc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_firtc"]
 texture = ExtResource("2_cleqr")
@@ -79,6 +81,44 @@ sources/0 = SubResource("TileSetAtlasSource_firtc")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fr03a"]
 
+[sub_resource type="Animation" id="Animation_kmwhq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_g0p6x"]
+resource_name = "move"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(144, 3), Vector2(144, 96), Vector2(144, 96)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7itvl"]
+_data = {
+"RESET": SubResource("Animation_kmwhq"),
+"move": SubResource("Animation_g0p6x")
+}
+
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_cxuxa")]
@@ -97,3 +137,33 @@ layer_0/tile_data = PackedInt32Array(-1, 65536, 0, -65536, 65536, 0, -65535, 655
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 159)
 shape = SubResource("WorldBoundaryShape2D_fr03a")
+
+[node name="Platform" parent="." instance=ExtResource("3_5mpup")]
+position = Vector2(0, -68)
+
+[node name="Platform2" parent="." instance=ExtResource("3_5mpup")]
+position = Vector2(80, -132)
+
+[node name="Platform3" parent="." instance=ExtResource("3_5mpup")]
+position = Vector2(0, -196)
+
+[node name="Platform4" parent="." instance=ExtResource("3_5mpup")]
+position = Vector2(80, -260)
+
+[node name="Platform5" parent="." instance=ExtResource("3_5mpup")]
+position = Vector2(144, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform5"]
+libraries = {
+"": SubResource("AnimationLibrary_7itvl")
+}
+autoplay = "move"
+
+[node name="Heart" parent="." instance=ExtResource("4_708tc")]
+position = Vector2(80, -285)
+
+[node name="Heart2" parent="." instance=ExtResource("4_708tc")]
+position = Vector2(144, 70)
+
+[node name="Heart3" parent="." instance=ExtResource("4_708tc")]
+position = Vector2(312, -21)
