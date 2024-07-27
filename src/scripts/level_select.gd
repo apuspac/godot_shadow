@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var pause_panel = $Camera2D/Pause_panel
+@onready var heart1 = $Heart
 var paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,3 +49,7 @@ func _on_change_level_2_enter_change_area():
 
 func _on_change_level_3_enter_change_area():
 	get_tree().change_scene_to_file("res://src/scene/map1-1.tscn")
+
+
+func _on_item_collect_enter_collect_true():
+	heart1.visible = true

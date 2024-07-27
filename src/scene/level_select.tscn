@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dimtg1quoo4i0"]
+[gd_scene load_steps=9 format=3 uid="uid://dimtg1quoo4i0"]
 
 [ext_resource type="Script" path="res://src/scripts/level_select.gd" id="1_on58e"]
 [ext_resource type="TileSet" uid="uid://y5btdylpqdoj" path="res://assets/tilemap.tres" id="2_owckx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgi1p5hsqog2h" path="res://src/parts_scene/pause_panel.tscn" id="4_ql8de"]
 [ext_resource type="PackedScene" uid="uid://q541ngmlpbqg" path="res://src/parts_scene/change_level.tscn" id="5_a2xnx"]
 [ext_resource type="PackedScene" uid="uid://k7uxq387d5bu" path="res://src/parts_scene/item_collect.tscn" id="6_k3i3o"]
+[ext_resource type="PackedScene" uid="uid://begksdmwywrf8" path="res://scenes/heart.tscn" id="7_wm7xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpxim"]
 size = Vector2(104, 107)
@@ -54,8 +55,13 @@ position = Vector2(515, 49)
 [node name="change_level3" parent="." instance=ExtResource("5_a2xnx")]
 position = Vector2(691, 52)
 
+[node name="Heart" parent="." instance=ExtResource("7_wm7xq")]
+visible = false
+position = Vector2(-362, -11)
+
 [connection signal="jump_level_select" from="Camera2D/Pause_panel" to="." method="_on_pause_panel_jump_level_select"]
 [connection signal="jump_main_menu" from="Camera2D/Pause_panel" to="." method="_on_pause_panel_jump_main_menu"]
+[connection signal="enter_collect_true" from="item_collect" to="." method="_on_item_collect_enter_collect_true"]
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
 [connection signal="enter_change_area" from="change_level2" to="." method="_on_change_level_2_enter_change_area"]
 [connection signal="enter_change_area" from="change_level3" to="." method="_on_change_level_3_enter_change_area"]
