@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var pause_panel = $Camera2D/Pause_panel
 @onready var heart1 = $Heart
+@onready var clear_label = $item_collect/Label
 var paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,3 +54,4 @@ func _on_change_level_3_enter_change_area():
 
 func _on_item_collect_enter_collect_true():
 	heart1.visible = true
+	clear_label.visible = true

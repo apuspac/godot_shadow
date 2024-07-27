@@ -46,6 +46,14 @@ offset_bottom = 109.0
 position = Vector2(53, 54)
 shape = SubResource("RectangleShape2D_vpxim")
 
+[node name="Label" type="Label" parent="item_collect"]
+visible = false
+offset_left = -1.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = -25.0
+text = "CLEAR"
+
 [node name="change_level" parent="." instance=ExtResource("5_a2xnx")]
 position = Vector2(316, 49)
 
