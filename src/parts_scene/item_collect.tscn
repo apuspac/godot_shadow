@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://k7uxq387d5bu"]
 
-[ext_resource type="Script" path="res://src/parts_script/item_collect.gd" id="1_trati"]
+[ext_resource type="Script" path="res://src/parts_scripts/item_collect.gd" id="1_trati"]
 
 [node name="item_collect" type="Area2D"]
 script = ExtResource("1_trati")
