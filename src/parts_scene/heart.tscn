@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://c1npvq2gqij0p"]
 
+[ext_resource type="Script" path="res://src/parts_scripts/heart.gd" id="1_86hyr"]
 [ext_resource type="Texture2D" uid="uid://cmfphltb6qsyx" path="res://assets/sprites/heart.png" id="1_a507w"]
-[ext_resource type="Script" path="res://src/parts_scripts/heart.gd" id="1_bov7x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxnd7"]
 atlas = ExtResource("1_a507w")
@@ -71,8 +71,8 @@ animations = [{
 radius = 8.544
 
 [node name="Heart" type="Area2D"]
-collision_mask = 2
-script = ExtResource("1_bov7x")
+collision_layer = 32
+script = ExtResource("1_86hyr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_siu71")

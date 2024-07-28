@@ -10,12 +10,17 @@ extends Control
 	$HP/AnimatedSprite2D5
 ]
 
+@onready var hearts = get_tree().get_nodes_in_group("Heart")
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_HP()
 	update_item_heart()
 	print(Global.player_item_heart)
 	print(Global.player_HP)
+	
+	
 	
 
 func update_HP():
@@ -36,9 +41,12 @@ func update_item_heart():
 	item_label.text = item_text
 
 
-func _on_heart_get_heart():
-	update_item_heart()
-
 
 func _on_damage_zone_enter_damage_zone():
 	update_HP()
+
+
+
+
+func _on_heart_get_heart():
+	update_item_heart()
