@@ -19,10 +19,13 @@ func _ready():
 	
 
 func update_HP():
+	print(Global.player_HP)
 	var i = 0
 	for heart in hp_heart:
 		if i < Global.player_HP:
 			heart.visible = true
+		else:
+			heart.visible = false
 		i += 1
 
 func update_item_heart():
@@ -35,3 +38,7 @@ func update_item_heart():
 
 func _on_heart_get_heart():
 	update_item_heart()
+
+
+func _on_damage_zone_enter_damage_zone():
+	update_HP()
