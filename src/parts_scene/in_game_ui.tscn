@@ -1,17 +1,66 @@
-[gd_scene load_steps=2 format=3 uid="uid://db8rp07qo78j7"]
+[gd_scene load_steps=9 format=3 uid="uid://db8rp07qo78j7"]
 
 [ext_resource type="Script" path="res://src/parts_scripts/in_game_ui.gd" id="1_k3wkj"]
+[ext_resource type="Texture2D" uid="uid://cmfphltb6qsyx" path="res://assets/sprites/heart.png" id="2_ikc5h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1girs"]
+atlas = ExtResource("2_ikc5h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4hpg"]
+atlas = ExtResource("2_ikc5h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_catr0"]
+atlas = ExtResource("2_ikc5h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk7wt"]
+atlas = ExtResource("2_ikc5h")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qksc3"]
+atlas = ExtResource("2_ikc5h")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvi80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1girs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4hpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_catr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk7wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qksc3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="in_game_ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -28.0
+offset_right = -104.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k3wkj")
 
 [node name="player_HP" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -21,3 +70,30 @@ layout_mode = 0
 offset_top = 23.0
 offset_right = 40.0
 offset_bottom = 46.0
+
+[node name="HP" type="Node" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HP"]
+position = Vector2(9, 6)
+sprite_frames = SubResource("SpriteFrames_pvi80")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="HP"]
+position = Vector2(27, 6)
+sprite_frames = SubResource("SpriteFrames_pvi80")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="HP"]
+position = Vector2(45, 6)
+sprite_frames = SubResource("SpriteFrames_pvi80")
+autoplay = "default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="HP"]
+position = Vector2(81, 6)
+sprite_frames = SubResource("SpriteFrames_pvi80")
+autoplay = "default"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="HP"]
+position = Vector2(63, 6)
+sprite_frames = SubResource("SpriteFrames_pvi80")
+autoplay = "default"

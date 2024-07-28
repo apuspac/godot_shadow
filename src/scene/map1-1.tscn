@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dl4orr1y8xmdq"]
 
 [ext_resource type="Script" path="res://src/scripts/map1-1.gd" id="1_l7x70"]
-[ext_resource type="Texture2D" uid="uid://cfi12mq0dlhb4" path="res://assets/sprites/world_tileset.png" id="1_s35yn"]
+[ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="1_s35yn"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="2_keasy"]
 [ext_resource type="PackedScene" uid="uid://crqocicxwiq88" path="res://src/parts_scene/camera_2d.tscn" id="3_ylioj"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="4_5pxqi"]
@@ -115,10 +115,10 @@ _data = {
 script = ExtResource("1_l7x70")
 
 [node name="background" type="ColorRect" parent="."]
-offset_left = -1492.0
-offset_top = -1723.0
-offset_right = 5391.0
-offset_bottom = 2061.0
+offset_left = -1355.0
+offset_top = -1677.0
+offset_right = 5528.0
+offset_bottom = 2107.0
 color = Color(0.14902, 0.14902, 0.14902, 0.65098)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -132,12 +132,6 @@ collision_layer = 32
 collision_mask = 1
 
 [node name="Camera2D" parent="." instance=ExtResource("3_ylioj")]
-
-[node name="in_game_ui" parent="Camera2D" instance=ExtResource("5_6kjtr")]
-offset_left = 209.0
-offset_top = -42.0
-offset_right = 209.0
-offset_bottom = -42.0
 
 [node name="change_level" parent="." instance=ExtResource("6_p77qq")]
 position = Vector2(1365, 45)
@@ -172,7 +166,15 @@ libraries = {
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
-[connection signal="get_heart" from="Heart" to="Camera2D/in_game_ui" method="_on_heart_get_heart"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="in_game_ui" parent="CanvasLayer" instance=ExtResource("5_6kjtr")]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
+
+[connection signal="get_heart" from="Heart" to="CanvasLayer/in_game_ui" method="_on_heart_get_heart"]
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
 
 [editable path="gimmick_obj/move_obj"]
