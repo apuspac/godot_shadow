@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://heeuygipe32f"]
 
 [ext_resource type="Texture2D" uid="uid://cfi12mq0dlhb4" path="res://assets/sprites/world_tileset.png" id="1_5gx0f"]
-[ext_resource type="Script" path="res://src/map1-3.gd" id="1_pneuw"]
+[ext_resource type="Script" path="res://src/scripts/map1-3.gd" id="1_pneuw"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="2_niwoj"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="3_svd60"]
 [ext_resource type="PackedScene" uid="uid://crqocicxwiq88" path="res://src/parts_scene/camera_2d.tscn" id="4_46ktx"]

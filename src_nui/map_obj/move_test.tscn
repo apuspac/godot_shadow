@@ -32,6 +32,7 @@ _data = {
 script = ExtResource("1_bnmdr")
 
 [node name="move_test" type="AnimatableBody2D" parent="."]
+position = Vector2(500, 0)
 collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="move_test"]

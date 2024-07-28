@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh1mt0whmtrm7"]
+[gd_scene load_steps=9 format=3 uid="uid://censywfxhn47j"]
 
 [ext_resource type="Texture2D" uid="uid://m5oar8dq7m8q" path="res://assets/sprites/Background/bg1.png" id="1_jen7s"]
 [ext_resource type="Texture2D" uid="uid://deeeefajsvfl7" path="res://assets/sprites/Background/bg2.png" id="2_d1ey4"]
@@ -6,13 +6,13 @@
 [ext_resource type="TileSet" uid="uid://y5btdylpqdoj" path="res://assets/tilemap.tres" id="5_nwufw"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="5_xdp4u"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="6_mn4gm"]
+[ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="8_wngb0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hyv07"]
 
 [node name="Level" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2(202.259, 588)
 
 [node name="bg1" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
@@ -45,32 +45,35 @@ layer_0/tile_data = PackedInt32Array(262134, 65536, 8, 327670, 65536, 8, -393211
 
 [node name="Heart" type="Node" parent="."]
 
-[node name="Heart3" parent="Heart" instance=ExtResource("5_xdp4u")]
-position = Vector2(1227, 28)
+[node name="Heart2" parent="Heart" groups=["Heart"] instance=ExtResource("5_xdp4u")]
+position = Vector2(1218, 174)
 
-[node name="Heart4" parent="Heart" instance=ExtResource("5_xdp4u")]
-position = Vector2(1226, 176)
+[node name="Heart3" parent="Heart" groups=["Heart"] instance=ExtResource("5_xdp4u")]
+position = Vector2(1222, 27)
 
-[node name="Heart2" parent="Heart" instance=ExtResource("5_xdp4u")]
-position = Vector2(458, 317)
+[node name="Heart4" parent="Heart" groups=["Heart"] instance=ExtResource("5_xdp4u")]
+position = Vector2(451, 311)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(321, 359)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(0, 10)
 shape = SubResource("WorldBoundaryShape2D_hyv07")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-position = Vector2(317, 194)
-limit_left = 1
-limit_top = 0
-limit_right = 1280
-limit_bottom = -360
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="in_game_ui" parent="CanvasLayer" instance=ExtResource("8_wngb0")]
 
 [node name="Player" parent="." instance=ExtResource("6_mn4gm")]
-position = Vector2(317, 194)
+position = Vector2(325, 188)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(325, 188)
+
+[connection signal="get_heart" from="Heart/Heart2" to="CanvasLayer/in_game_ui" method="_on_heart_2_get_heart"]

@@ -1,19 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://q541ngmlpbqg"]
+[gd_scene load_steps=4 format=3 uid="uid://q541ngmlpbqg"]
 
-[ext_resource type="Script" path="res://src/parts_script/change_level.gd" id="1_wohyo"]
+[ext_resource type="Script" path="res://src/parts_scripts/change_level.gd" id="1_wohyo"]
+[ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="2_t3enx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8g5o"]
-size = Vector2(62, 64)
+size = Vector2(20, 93)
 
 [node name="change_level" type="Area2D"]
 script = ExtResource("1_wohyo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 62.0
 offset_bottom = 64.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(31, 32)
+position = Vector2(22, 47)
 shape = SubResource("RectangleShape2D_e8g5o")
+
+[node name="WorldTileset" type="Sprite2D" parent="."]
+position = Vector2(21, 52)
+texture = ExtResource("2_t3enx")
+region_enabled = true
+region_rect = Rect2(128, 133, 62, 102)
+region_filter_clip_enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

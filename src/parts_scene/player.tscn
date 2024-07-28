@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm4nkeefddh8a"]
+[gd_scene load_steps=12 format=3 uid="uid://cm4nkeefddh8a"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_68lro"]
 [ext_resource type="Texture2D" uid="uid://nq8fux0lm012" path="res://assets/sprites/player_sprite_sheet_.png" id="1_g3t70"]
@@ -58,8 +58,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5a8uk"]
-radius = 9.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5verq"]
+radius = 12.0
+height = 52.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jqmed"]
+polygon = PackedVector2Array(-2, -62, -8, -57, -2, -52, 4, -57)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
@@ -73,7 +77,15 @@ animation = &"run"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -9)
-shape = SubResource("CircleShape2D_5a8uk")
+position = Vector2(1, -24)
+shape = SubResource("CapsuleShape2D_5verq")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(3, 1)
+occluder = SubResource("OccluderPolygon2D_jqmed")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 0
+collide_with_areas = true
