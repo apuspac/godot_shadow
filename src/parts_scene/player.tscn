@@ -85,3 +85,7 @@ shape = SubResource("CapsuleShape2D_5verq")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(3, 1)
 occluder = SubResource("OccluderPolygon2D_jqmed")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 0
+collide_with_areas = true

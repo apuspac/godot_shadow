@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://db8rp07qo78j7"]
+
+[ext_resource type="Script" path="res://src/parts_scripts/in_game_ui.gd" id="1_k3wkj"]
+
+[node name="in_game_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k3wkj")
+
+[node name="player_HP" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="player_get_item" type="Label" parent="."]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 40.0
+offset_bottom = 46.0
