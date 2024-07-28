@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgi1p5hsqog2h"]
 
-[ext_resource type="Script" path="res://src_nui/script/pause_panel.gd" id="1_xoy2p"]
+[ext_resource type="Script" path="res://src/parts_scripts/pause_panel.gd" id="1_rqq5x"]
 
 [node name="Pause_panel" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ offset_left = 226.0
 offset_top = -1.0
 offset_right = 523.0
 offset_bottom = 244.0
-script = ExtResource("1_xoy2p")
+script = ExtResource("1_rqq5x")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0

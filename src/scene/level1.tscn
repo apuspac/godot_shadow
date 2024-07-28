@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://censywfxhn47j"]
 
-[ext_resource type="Script" path="res://src/level1.gd" id="1_o60h7"]
-[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parallax_background.tscn" id="1_v5d60"]
-[ext_resource type="Script" path="res://src/parts_scripts/Heart_node.gd" id="5_k3hwc"]
+[ext_resource type="Script" path="res://src/scripts/level1.gd" id="1_o60h7"]
+[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="1_v5d60"]
+[ext_resource type="Script" path="res://src/parts_scripts/heart_node.gd" id="5_k3hwc"]
 [ext_resource type="TileSet" uid="uid://y5btdylpqdoj" path="res://assets/tilemap.tres" id="5_nwufw"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="5_xdp4u"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="6_mn4gm"]

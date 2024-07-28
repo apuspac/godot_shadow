@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dl4orr1y8xmdq"]
+[gd_scene load_steps=18 format=3 uid="uid://dl4orr1y8xmdq"]
 
 [ext_resource type="Script" path="res://src/scripts/map1-1.gd" id="1_l7x70"]
 [ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="1_s35yn"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://crqocicxwiq88" path="res://src/parts_scene/camera_2d.tscn" id="3_ylioj"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="4_5pxqi"]
 [ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="5_6kjtr"]
+[ext_resource type="Script" path="res://src/parts_scripts/heart_node.gd" id="6_8reci"]
 [ext_resource type="PackedScene" uid="uid://q541ngmlpbqg" path="res://src/parts_scene/change_level.tscn" id="6_p77qq"]
+[ext_resource type="Script" path="res://src/parts_scripts/light_2d_node.gd" id="7_2u78v"]
 [ext_resource type="PackedScene" uid="uid://dorfk6jx45tth" path="res://src/parts_scene/light_2d.tscn" id="7_bfjxd"]
 [ext_resource type="PackedScene" uid="uid://d0oulqu7s2l0w" path="res://src/parts_scene/move_obj.tscn" id="8_usq63"]
 [ext_resource type="PackedScene" uid="uid://ctojymfu5dbfh" path="res://src/parts_scene/damage_zone.tscn" id="10_i1gou"]
@@ -138,15 +140,19 @@ tile_set = SubResource("TileSet_adeur")
 format = 2
 layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689, 65537, 8, 327690, 65537, 8, 327678, 65537, 7, 393214, 65537, 8, 327679, 65537, 7, 393215, 65537, 8, 262144, 65537, 7, 327680, 65537, 8, 262145, 65537, 7, 327681, 65537, 8, 262146, 65537, 7, 327682, 65537, 8, 262147, 65537, 7, 327683, 65537, 8, 262148, 65537, 7, 327684, 65537, 8, 262149, 65537, 7, 327685, 65537, 8, 262150, 65537, 7, 327686, 65537, 8, 262151, 65537, 7, 262152, 65537, 7, 262153, 65537, 7, 262154, 65537, 7, 262155, 65537, 7, 327691, 65537, 8, 262156, 65537, 7, 327692, 65537, 8, 262157, 65537, 7, 327693, 65537, 8, 262158, 65537, 7, 327694, 65537, 8, 196623, 65537, 7, 262159, 65537, 8, 327695, 65537, 8, 131088, 65537, 7, 196624, 65537, 8, 262160, 65537, 8, 327696, 65537, 8, 65553, 65537, 7, 131089, 65537, 8, 196625, 65537, 8, 262161, 65537, 8, 327697, 65537, 8, 65554, 65537, 8, 131090, 65537, 8, 196626, 65537, 8, 262162, 65537, 8, 327698, 65537, 8, 65555, 65537, 8, 131091, 65537, 8, 196627, 65537, 8, 262163, 65537, 8, 327699, 65537, 8, 65556, 131073, 8, 131092, 131073, 8, 196628, 131073, 8, 262164, 65537, 8, 327700, 65537, 8, 262165, 65537, 7, 327701, 65537, 8, 262166, 65537, 7, 327702, 65537, 8, 262167, 65537, 7, 327703, 65537, 8, 262168, 65537, 7, 327704, 65537, 8, 262169, 65537, 7, 327705, 65537, 8, 262170, 65537, 7, 327706, 65537, 8, 262171, 65537, 7, 327707, 65537, 8, 262172, 65537, 7, 327708, 65537, 8, 262173, 65537, 7, 327709, 65537, 8, 262174, 65537, 7, 327710, 65537, 8, 262175, 65537, 7, 327711, 65537, 8, 262176, 65537, 7, 327712, 65537, 8, 262177, 65537, 7, 327713, 65537, 8, 262178, 65537, 7, 327714, 65537, 8, 262179, 65537, 7, 327715, 65537, 8, 262180, 65537, 7, 327716, 65537, 8, 262181, 65537, 7, 327717, 65537, 8, 262182, 65537, 7, 327718, 65537, 8, 262183, 65537, 7, 327719, 65537, 8, 262184, 65537, 7, 327720, 65537, 8, 262185, 65537, 7, 327721, 65537, 8, 262186, 65537, 7, 327722, 65537, 8, 262187, 65537, 7, 327723, 65537, 8, 262188, 65537, 7, 327724, 65537, 8, 18, 65537, 7, 19, 65537, 7, 20, 131073, 7)
 
-[node name="Heart" parent="." instance=ExtResource("4_5pxqi")]
-position = Vector2(1299, 39)
-
 [node name="Camera2D" parent="." instance=ExtResource("3_ylioj")]
 
 [node name="change_level" parent="." instance=ExtResource("6_p77qq")]
 position = Vector2(1365, 45)
 
+[node name="Heart" type="Node2D" parent="."]
+script = ExtResource("6_8reci")
+
+[node name="Heart1" parent="Heart" instance=ExtResource("4_5pxqi")]
+position = Vector2(1299, 39)
+
 [node name="Lights" type="Node2D" parent="."]
+script = ExtResource("7_2u78v")
 
 [node name="light2d" parent="Lights" instance=ExtResource("7_bfjxd")]
 position = Vector2(635, 57)
@@ -180,10 +186,12 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(-153, 106)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
-position = Vector2(1074, -95)
+position = Vector2(867, 4)
 shape = SubResource("RectangleShape2D_sui1a")
 
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
+[connection signal="send_light_position" from="Lights" to="Player" method="_on_lights_send_light_position"]
+[connection signal="notice_shadow_color" from="Player" to="Lights" method="_on_player_notice_shadow_color"]
 [connection signal="enter_damage_zone" from="damage_zone" to="CanvasLayer/in_game_ui" method="_on_damage_zone_enter_damage_zone"]
 
 [editable path="gimmick_obj/move_obj"]

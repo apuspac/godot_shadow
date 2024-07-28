@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://btqqpkoks2vdy"]
 
-[ext_resource type="Script" path="res://src_nui/script/killzone.gd" id="1_u2iu1"]
+[ext_resource type="Script" path="res://src/parts_scripts/killzone.gd" id="1_vjnj0"]
 
 [node name="Killzone" type="Area2D"]
-script = ExtResource("1_u2iu1")
+script = ExtResource("1_vjnj0")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6

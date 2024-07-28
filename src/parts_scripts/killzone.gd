@@ -8,7 +8,9 @@ signal enter_kill_zone()
 func _on_body_entered(body):
 	print_debug("kill zone entered")
 	#Engine.time_scale = 0.5
+	Global.kill_player()
 	body.get_node("CollisionShape2D").queue_free()
+		
 	enter_kill_zone.emit()
 	timer.start()
 

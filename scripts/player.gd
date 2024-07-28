@@ -1,16 +1,22 @@
 extends CharacterBody2D
 
-
+# player physics
 const SPEED = 300.0
 const JUMP_VELOCITY = -700.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var is_flip_body = false
 
+# animation
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var timer = $Timer
+var is_flip_body = false
 
+# 
+
+
+func _process(delta: float) -> void:
+	var current_time = Time.get_ticks_msec() / 1000.0
+	change_visible_ray()
+	change_ray_color()
 
 func _physics_process(delta):
 	var direction = Input.get_vector("Left", "Right", "Up", "Down")
@@ -53,6 +59,10 @@ func flip_body(direction):
 	else:
 		animated_sprite.rotation_degrees = 0.0
 
+func change_visible_ray():
+	if Input.is_action_just_pressed("A"):
+		player_light_occluder.visible = !player_light_occluder.visible
+		player_raycast.enabled = player_light_occluder.visible
 
 func _on_killzone_enter_kill_zone():
 	print("enter kill zone")
@@ -66,3 +76,4 @@ func _on_enemy_collide_player():
 	print("enemy collide")
 	is_flip_body = true
 	timer.start()
+
