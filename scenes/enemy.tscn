@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://dypyfenvbsnbj"]
+[gd_scene load_steps=7 format=3 uid="uid://dypyfenvbsnbj"]
+
+[ext_resource type="Texture2D" uid="uid://cg4ywrjdfcs23" path="res://assets/sprites/enemy.png" id="1_bqhex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqvdp"]
+atlas = ExtResource("1_bqhex")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhf00"]
+atlas = ExtResource("1_bqhex")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3v4a"]
+atlas = ExtResource("1_bqhex")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcwkx"]
+atlas = ExtResource("1_bqhex")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lpj1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqvdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhf00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3v4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcwkx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
 
 [node name="Enemy" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_lpj1t")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.257759
