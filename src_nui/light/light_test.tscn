@@ -124,3 +124,5 @@ position = Vector2(761, -81)
 [connection signal="notice_water_area" from="water" to="Player2" method="_on_water_notice_water_area"]
 [connection signal="notice_water_area" from="water2" to="Player2" method="_on_water_2_notice_water_area"]
 [connection signal="notice_bounce_area" from="bounce" to="Player2" method="_on_bounce_notice_bounce_area"]
+
+[editable path="water"]

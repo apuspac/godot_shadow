@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # player physics
 const SPEED: float = 300.0
-const JUMP_VELOCITY: float = -700.0
+const JUMP_VELOCITY: float = -500.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # animation
@@ -11,12 +11,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_flip_body: bool = false
 
 
-# ability
+# raycast
 @onready var player_raycast: RayCast2D = $RayCast2D
 @onready var player_light_occluder: LightOccluder2D = $LightOccluder2D
 var shadow_color: int = 0
+var light_position: Vector2 = Vector2.ZERO
 signal notice_shadow_color(shadow_color: int)
+signal notice_collision_ability_move()
+signal notice_collision_ability_water()
+signal notice_collision_ability_bounce()
 
+# ability
 
 func _process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0
@@ -28,6 +33,7 @@ func _physics_process(delta: float):
 	move_func(delta)
 	flip_body(direction)
 	update_animation(direction)
+	update_raycast_position()
 	move_and_slide()
 
 
@@ -63,7 +69,6 @@ func flip_body(direction):
 		animated_sprite.rotation_degrees += 10.0
 	else:
 		animated_sprite.rotation_degrees = 0.0
-
 
 
 
@@ -105,14 +110,30 @@ func change_ray_color():
 			player_raycast.collision_mask = 16
 		
 		notice_shadow_color.emit(shadow_color)
+		shadow_color += 1
 		
-		if shadow_color > 4:
+		if shadow_color > 3:
 			shadow_color = 0
-		else:
-			shadow_color += 1
+			
 
 		print_debug("shadow_color: ", shadow_color, "mask_bit: ", player_raycast.collision_mask)
 
+# update raycast position
+func update_raycast_position() -> void:
+	var light_angle = position.angle_to_point(light_position) - PI /2 + PI
+	if(light_angle < -PI):
+		light_angle += 2 * PI
+	player_raycast.rotation = light_angle
 
-func _on_lights_send_light_position(light_position):
-	print_debug(light_position)
+
+
+func _on_lights_send_light_position(light_p):
+	# maybe　light_position could be an array.
+	light_position = light_p
+
+func collision_ability_move():
+	notice_collision_ability_move.emit()
+	
+	
+#func collision_ability_water()
+#func collision_ability_bounce()

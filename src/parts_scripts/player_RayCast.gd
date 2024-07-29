@@ -1,13 +1,15 @@
 
 extends RayCast2D
 
-signal notice_collision_ability_move()
+signal notice_collision_ability_move(collision_id: RID)
 signal notice_collision_ability_water()
 signal notice_collision_ability_bounce()
 
 
 var ability_id: int = 0
 
+
+@onready var Player_node = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,15 +20,15 @@ func _ready():
 func _process(delta):
 	if is_colliding():
 		if(ability_id == 1):
-			collision_ability_move()
+			ability_move()
 		elif (ability_id == 2):
 			collision_ability_water()
 		elif (ability_id == 3):
 			collision_ability_bounce()
 
 
-func collision_ability_move():
-	notice_collision_ability_move.emit()
+func ability_move():
+	notice_collision_ability_move.emit(get_collider_rid())
 
 func collision_ability_water():
 	notice_collision_ability_water.emit()

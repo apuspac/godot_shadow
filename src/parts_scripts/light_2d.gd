@@ -8,7 +8,6 @@ func _ready():
 
 
 func change_shadow_color(color: int):
-	print("yoisho")
 	var shadow_color_tmp: Color = Color.WHITE
 	if(color == 0):
 		shadow_color_tmp = Color.ALICE_BLUE

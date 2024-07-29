@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/parts_scripts/player.gd" id="1_0tk5j"]
 [ext_resource type="Texture2D" uid="uid://nq8fux0lm012" path="res://assets/sprites/player_sprite_sheet_.png" id="1_g3t70"]
-[ext_resource type="Script" path="res://src/parts_scripts/player_RayCast.gd" id="3_gfnwc"]
+[ext_resource type="PackedScene" uid="uid://ij13812n13w3" path="res://src/parts_scene/player_raycast.tscn" id="3_08fip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_560be"]
 atlas = ExtResource("1_g3t70")
@@ -84,10 +84,9 @@ shape = SubResource("CapsuleShape2D_5verq")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 position = Vector2(3, 1)
 occluder = SubResource("OccluderPolygon2D_jqmed")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-collision_mask = 0
-collide_with_areas = true
-script = ExtResource("3_gfnwc")
+[node name="RayCast2D" parent="." instance=ExtResource("3_08fip")]
+visible = false

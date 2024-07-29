@@ -1,14 +1,15 @@
 extends Node2D
 
-@onready var obj_animation = $AnimatableBody2D/AnimatedSprite2D
-@onready var move_animation = $AnimationPlayer
+@onready var obj_animation = $Node2D/AnimatableBody2D/AnimatedSprite2D
+@onready var move_animation = $Node2D/AnimatableBody2D/AnimationPlayer
+@onready var area_2d = $Area2D
 
 
 var animation_flag: bool = false
 var is_collision_once: bool = true
 
 func _ready():
-	obj_animation.play("idle")
+	add_to_group("Move_obj")
 	
 
 
@@ -18,10 +19,12 @@ func gimick_on_play():
 		move_animation.play("move")
 		obj_animation.play("on_gimmick")
 		is_collision_once = false
-	
-	
-func _on_ray_cast_2d_notice_collision_ability_move():
-	gimick_on_play()
 
-func _on_area_2d_body_entered(body):
-	gimick_on_play()
+func ability_move(id: RID):
+	if id == area_2d.get_rid():
+		gimick_on_play()
+
+#
+#func _on_ray_cast_2d_notice_collision_ability_move(id: RID):
+	#print("map" + str(area_2d.get_rid()))
+
