@@ -1,5 +1,6 @@
 extends Node2D
 
+# player
 var player_item_heart = 0
 var player_HP = 5
 
@@ -14,3 +15,9 @@ func damage_player() -> void:
 
 func kill_player() -> void:
 	player_HP = 0
+
+# store player position for scene change
+var player_posision_level1 = Vector2(325, 188)
+
+# visible heart
+var level1_heart:Array[bool] = [true, true, true]

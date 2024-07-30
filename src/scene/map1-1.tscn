@@ -293,7 +293,7 @@ layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689,
 position = Vector2(49, 0)
 
 [node name="change_level" parent="." instance=ExtResource("6_p77qq")]
-position = Vector2(1365, 45)
+position = Vector2(1388, 32)
 
 [node name="Heart" type="Node2D" parent="."]
 script = ExtResource("6_8reci")
@@ -305,7 +305,7 @@ position = Vector2(1299, 39)
 script = ExtResource("7_2u78v")
 
 [node name="light2d" parent="Lights" instance=ExtResource("7_bfjxd")]
-position = Vector2(638, 25)
+position = Vector2(630, 25)
 scale = Vector2(11.9336, 7.07422)
 color = Color(1, 1, 1, 0)
 shadow_color = Color(0.184314, 0.603922, 0.603922, 1)
@@ -388,6 +388,7 @@ position = Vector2(867, 4)
 shape = SubResource("RectangleShape2D_sui1a")
 
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
+[connection signal="notice_get_heart" from="Heart/Heart1" to="." method="_on_heart_1_notice_get_heart"]
 [connection signal="send_light_position" from="Lights" to="Player" method="_on_lights_send_light_position"]
 [connection signal="notice_shadow_color" from="Player" to="Lights" method="_on_player_notice_shadow_color"]
 [connection signal="notice_shadow_color" from="Player" to="Player/RayCast2D" method="_on_player_notice_shadow_color"]

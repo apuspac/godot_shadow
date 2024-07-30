@@ -16,15 +16,10 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_HP()
-	update_item_heart()
-	print(Global.player_item_heart)
-	print(Global.player_HP)
-	
-	
+	update_item_heart()	
 	
 
 func update_HP():
-	print(Global.player_HP)
 	var i = 0
 	for heart in hp_heart:
 		if i < Global.player_HP:
