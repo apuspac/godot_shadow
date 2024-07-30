@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh1mt0whmtrm7"]
+[gd_scene load_steps=9 format=3 uid="uid://bh1mt0whmtrm7"]
 
 [ext_resource type="Texture2D" uid="uid://m5oar8dq7m8q" path="res://assets/sprites/Background/bg1.png" id="1_jen7s"]
 [ext_resource type="Texture2D" uid="uid://deeeefajsvfl7" path="res://assets/sprites/Background/bg2.png" id="2_d1ey4"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://y5btdylpqdoj" path="res://assets/tilemap.tres" id="5_nwufw"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="5_xdp4u"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="6_mn4gm"]
+[ext_resource type="PackedScene" uid="uid://dypyfenvbsnbj" path="res://scenes/enemy.tscn" id="6_r0me8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hyv07"]
 
@@ -68,6 +69,9 @@ limit_left = 1
 limit_top = 0
 limit_right = 1280
 limit_bottom = -360
+
+[node name="Enemy" parent="." instance=ExtResource("6_r0me8")]
+position = Vector2(976, 232)
 
 [node name="Player" parent="." instance=ExtResource("6_mn4gm")]
 position = Vector2(317, 194)
