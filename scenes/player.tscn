@@ -1,24 +1,24 @@
 [gd_scene load_steps=7 format=3 uid="uid://lo6pmqp5fljt"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_410eb"]
-[ext_resource type="Texture2D" path="res://assets/sprites/player_sprite_sheet_2.png" id="2_0wa4u"]
+[ext_resource type="Texture2D" uid="uid://pau7jr6f11fa" path="res://assets/sprites/player_sprite_sheet.png" id="2_qbryl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nm5cm"]
-atlas = ExtResource("2_0wa4u")
-region = Rect2(0, 0, 144, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8diy5"]
+atlas = ExtResource("2_qbryl")
+region = Rect2(0, 0, 176, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_smsk3"]
-atlas = ExtResource("2_0wa4u")
-region = Rect2(144, 0, 144, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa0lv"]
+atlas = ExtResource("2_qbryl")
+region = Rect2(176, 0, 176, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rn5f4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nm5cm")
+"texture": SubResource("AtlasTexture_8diy5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_smsk3")
+"texture": SubResource("AtlasTexture_qa0lv")
 }],
 "loop": true,
 "name": &"idle",
@@ -33,11 +33,11 @@ collision_layer = 2
 script = ExtResource("1_410eb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(20, -32)
+position = Vector2(-1, -32)
 sprite_frames = SubResource("SpriteFrames_rn5f4")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.319927
+frame_progress = 0.501949
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -9)
