@@ -7,7 +7,7 @@ signal notice_get_heart()
 
 # false-> not get yet
 var is_get_heart: bool = false
-
+@onready var animation_player = $AnimationPlayer
 
 func _on_body_entered(body):
 	print(is_get_heart, Global.level1_heart[0])
@@ -16,5 +16,5 @@ func _on_body_entered(body):
 		parent.get_heart_children()
 		print_debug("+1 Heart!")
 		notice_get_heart.emit()
-		queue_free()
+		animation_player.play("pick_up")
  
