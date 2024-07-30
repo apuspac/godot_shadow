@@ -10,6 +10,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var timer = $Timer
 var is_flip_body: bool = false
 
+# SFX
+@onready var jump_wav = $jump
 
 # raycast
 @onready var player_raycast: RayCast2D = $RayCast2D
@@ -44,6 +46,8 @@ func move_func(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("Space") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		jump_wav.play()
+		
 
 	var direction = Input.get_axis("Left", "Right")
 	if direction:

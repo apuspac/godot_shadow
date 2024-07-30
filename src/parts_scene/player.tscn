@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cm4nkeefddh8a"]
+[gd_scene load_steps=14 format=3 uid="uid://cm4nkeefddh8a"]
 
 [ext_resource type="Script" path="res://src/parts_scripts/player.gd" id="1_0tk5j"]
 [ext_resource type="Texture2D" uid="uid://nq8fux0lm012" path="res://assets/sprites/player_sprite_sheet_.png" id="1_g3t70"]
 [ext_resource type="PackedScene" uid="uid://ij13812n13w3" path="res://src/parts_scene/player_raycast.tscn" id="3_08fip"]
+[ext_resource type="AudioStream" uid="uid://5bgosqdcco4h" path="res://assets/brackeys_sample/sounds/jump.wav" id="4_efusp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_560be"]
 atlas = ExtResource("1_g3t70")
@@ -90,3 +91,6 @@ occluder = SubResource("OccluderPolygon2D_jqmed")
 
 [node name="RayCast2D" parent="." instance=ExtResource("3_08fip")]
 visible = false
+
+[node name="jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_efusp")

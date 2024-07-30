@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dimtg1quoo4i0"]
+[gd_scene load_steps=11 format=3 uid="uid://dimtg1quoo4i0"]
 
 [ext_resource type="Script" path="res://src/scripts/level_select.gd" id="1_on58e"]
 [ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="2_lpss3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgi1p5hsqog2h" path="res://src/parts_scene/pause_panel.tscn" id="4_ql8de"]
 [ext_resource type="PackedScene" uid="uid://q541ngmlpbqg" path="res://src/parts_scene/change_level.tscn" id="5_a2xnx"]
 [ext_resource type="PackedScene" uid="uid://k7uxq387d5bu" path="res://src/parts_scene/item_collect.tscn" id="6_k3i3o"]
+[ext_resource type="AudioStream" uid="uid://og3bov5p2j6w" path="res://assets/brackeys_sample/sounds/power_up.wav" id="7_ni0ny"]
 [ext_resource type="PackedScene" uid="uid://begksdmwywrf8" path="res://scenes/heart.tscn" id="7_wm7xq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpxim"]
@@ -57,6 +58,9 @@ offset_top = -48.0
 offset_right = 48.0
 offset_bottom = -25.0
 text = "CLEAR"
+
+[node name="CLEAR_Sound" type="AudioStreamPlayer" parent="item_collect"]
+stream = ExtResource("7_ni0ny")
 
 [node name="change_level" parent="." instance=ExtResource("5_a2xnx")]
 position = Vector2(313, 165)

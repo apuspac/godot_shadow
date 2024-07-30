@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://dl4orr1y8xmdq"]
+[gd_scene load_steps=34 format=3 uid="uid://dl4orr1y8xmdq"]
 
 [ext_resource type="Script" path="res://src/scripts/map1-1.gd" id="1_l7x70"]
 [ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="1_s35yn"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="2_keasy"]
+[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="2_llar6"]
 [ext_resource type="PackedScene" uid="uid://crqocicxwiq88" path="res://src/parts_scene/camera_2d.tscn" id="3_ylioj"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="4_5pxqi"]
 [ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="5_6kjtr"]
@@ -269,6 +270,11 @@ size = Vector2(84, 27)
 [node name="map1-1" type="Node2D"]
 script = ExtResource("1_l7x70")
 
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_llar6")]
+offset = Vector2(-100, -200)
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, -100, -200)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="in_game_ui" parent="CanvasLayer" instance=ExtResource("5_6kjtr")]
@@ -293,7 +299,7 @@ layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689,
 position = Vector2(49, 0)
 
 [node name="change_level" parent="." instance=ExtResource("6_p77qq")]
-position = Vector2(1388, 32)
+position = Vector2(1386.82, 32)
 
 [node name="Heart" type="Node2D" parent="."]
 script = ExtResource("6_8reci")
@@ -305,7 +311,7 @@ position = Vector2(1299, 39)
 script = ExtResource("7_2u78v")
 
 [node name="light2d" parent="Lights" instance=ExtResource("7_bfjxd")]
-position = Vector2(630, 25)
+position = Vector2(625, -18)
 scale = Vector2(11.9336, 7.07422)
 color = Color(1, 1, 1, 0)
 shadow_color = Color(0.184314, 0.603922, 0.603922, 1)
