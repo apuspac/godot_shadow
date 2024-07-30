@@ -15,7 +15,7 @@ func _ready():
 
 func gimick_on_play():
 	if is_collision_once:
-		print_debug("collision move")
+		#print_debug("collision move")
 		move_animation.play("move")
 		obj_animation.play("on_gimmick")
 		is_collision_once = false

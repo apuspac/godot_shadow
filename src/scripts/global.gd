@@ -16,8 +16,11 @@ func damage_player() -> void:
 func kill_player() -> void:
 	player_HP = 0
 
+func reset_player_hp() -> void:
+	player_HP = 5
+
 # store player position for scene change
-var player_posision_level1 = Vector2(325, 188)
+var player_posision_level1 = Vector2(644, 224)
 
 # visible heart
 var level1_heart:Array[bool] = [true, true, true]

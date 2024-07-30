@@ -17,13 +17,20 @@ var is_flip_body: bool = false
 @onready var player_raycast: RayCast2D = $RayCast2D
 @onready var player_light_occluder: LightOccluder2D = $LightOccluder2D
 var shadow_color: int = 0
-var light_position: Vector2 = Vector2.ZERO
+var light_position: Array[Vector2] = []
+var light_id: Array[int] = []
+var last_use_light_index = -1
 signal notice_shadow_color(shadow_color: int)
 signal notice_collision_ability_move()
 signal notice_collision_ability_water()
 signal notice_collision_ability_bounce()
+signal notice_change_light(id: int)
 
 # ability
+
+
+
+
 
 func _process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0
@@ -81,6 +88,12 @@ func _on_killzone_enter_kill_zone():
 	is_flip_body = true
 	timer.start()
 
+func _on_damage_zone_enter_kill_zone():
+	print("enter kill zone")
+	is_flip_body = true
+	timer.start()
+
+
 func _on_timer_timeout():
 	is_flip_body = false	
 
@@ -121,19 +134,45 @@ func change_ray_color():
 			
 
 		print_debug("shadow_color: ", shadow_color, "mask_bit: ", player_raycast.collision_mask)
+	
+	
+
 
 # update raycast position
 func update_raycast_position() -> void:
-	var light_angle = position.angle_to_point(light_position) - PI /2 + PI
+	var light_index = closest_light()
+	is_change_light(light_index)
+	
+	var light_angle = position.angle_to_point(light_position[light_index]) - PI /2 + PI
 	if(light_angle < -PI):
 		light_angle += 2 * PI
 	player_raycast.rotation = light_angle
 
+func is_change_light(light_point_index: int):
+	if light_point_index != last_use_light_index:
+		last_use_light_index = light_point_index
+		notice_change_light.emit(light_id[last_use_light_index])
+
+# Returns the index of the nearest light_point.
+func closest_light() -> int:
+	var min_index = 0
+	var min_distance = position.distance_squared_to(light_position[min_index])
+	for point in light_position.size():
+		var distance = position.distance_squared_to(light_position[point])
+		if min_distance > distance:
+			min_distance = distance
+			min_index = point
+	
+	return min_index 
+	
+	
 
 
-func _on_lights_send_light_position(light_p):
-	# maybe　light_position could be an array.
-	light_position = light_p
+func _on_lights_send_light_position(light_p: Vector2, lid: int):
+	light_position.push_back(light_p)
+	light_id.push_back(lid)
+
+
 
 func collision_ability_move():
 	notice_collision_ability_move.emit()
@@ -141,3 +180,5 @@ func collision_ability_move():
 	
 #func collision_ability_water()
 #func collision_ability_bounce()
+
+

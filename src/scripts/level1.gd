@@ -43,9 +43,16 @@ func _on_pause_panel_jump_main_menu():
 
 
 func _on_change_level_enter_change_area():
-	get_tree().change_scene_to_file("res://src/scene/level_select.tscn")
+	Global.player_posision_level1 = Vector2($Player.position.x - 50, $Player.position.y)
+	get_tree().change_scene_to_file("res://src/scene/map1-2.tscn")
 
 
 func _on_change_level_2_enter_change_area():
 	Global.player_posision_level1 = Vector2($Player.position.x - 50, $Player.position.y)
 	get_tree().change_scene_to_file("res://src/scene/map1-1.tscn")
+
+
+func _on_change_level_3_enter_change_area():
+	Global.player_posision_level1 = Vector2($Player.position.x - 50, $Player.position.y)
+	get_tree().change_scene_to_file("res://src/scene/map1-3.tscn")
+
