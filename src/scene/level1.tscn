@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://censywfxhn47j"]
 
-[ext_resource type="Script" path="res://src/level1.gd" id="1_o60h7"]
-[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parallax_background.tscn" id="1_v5d60"]
-[ext_resource type="Script" path="res://src/parts_scripts/Heart_node.gd" id="5_k3hwc"]
+[ext_resource type="Script" path="res://src/scripts/level1.gd" id="1_o60h7"]
+[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="1_v5d60"]
+[ext_resource type="Script" path="res://src/parts_scripts/heart_node.gd" id="5_k3hwc"]
 [ext_resource type="TileSet" uid="uid://y5btdylpqdoj" path="res://assets/tilemap.tres" id="5_nwufw"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="5_xdp4u"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="6_mn4gm"]
@@ -67,7 +67,11 @@ position = Vector2(325, 188)
 [node name="change_level" parent="." instance=ExtResource("7_ma2pe")]
 position = Vector2(438, 268)
 
+[node name="change_level2" parent="." instance=ExtResource("7_ma2pe")]
+position = Vector2(1143, 140)
+
 [connection signal="get_heart" from="Heart" to="CanvasLayer/in_game_ui" method="_on_heart_get_heart"]
 [connection signal="jump_level_select" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_level_select"]
 [connection signal="jump_main_menu" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_main_menu"]
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
+[connection signal="enter_change_area" from="change_level2" to="." method="_on_change_level_2_enter_change_area"]

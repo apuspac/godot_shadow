@@ -4,6 +4,9 @@ extends Node2D
 @onready var heart1 = $Heart
 var paused = false
 
+func _ready():
+	$Player.position = Global.player_posision_level1
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("Escape"):
@@ -41,3 +44,8 @@ func _on_pause_panel_jump_main_menu():
 
 func _on_change_level_enter_change_area():
 	get_tree().change_scene_to_file("res://src/scene/level_select.tscn")
+
+
+func _on_change_level_2_enter_change_area():
+	Global.player_posision_level1 = Vector2($Player.position.x - 50, $Player.position.y)
+	get_tree().change_scene_to_file("res://src/scene/map1-1.tscn")

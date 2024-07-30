@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0oulqu7s2l0w"]
+[gd_scene load_steps=7 format=3 uid="uid://d0oulqu7s2l0w"]
 
 [ext_resource type="Script" path="res://src/parts_scripts/move_obj.gd" id="1_tj5vh"]
 [ext_resource type="Texture2D" uid="uid://yxre806ndm7p" path="res://assets/tile.png" id="2_6uarv"]
@@ -31,30 +31,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2fqf"]
-size = Vector2(6, 4.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp21k"]
-size = Vector2(4, 4)
+size = Vector2(32.5, 32.4531)
 
 [node name="move_obj" type="Node2D"]
 script = ExtResource("1_tj5vh")
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-collision_layer = 4
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatableBody2D"]
-scale = Vector2(0.25, 0.25)
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Node2D"]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/AnimatableBody2D"]
 sprite_frames = SubResource("SpriteFrames_kmcd5")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_i2fqf")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-5, 0)
-shape = SubResource("RectangleShape2D_rp21k")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

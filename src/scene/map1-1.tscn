@@ -1,15 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://dl4orr1y8xmdq"]
+[gd_scene load_steps=34 format=3 uid="uid://dl4orr1y8xmdq"]
 
 [ext_resource type="Script" path="res://src/scripts/map1-1.gd" id="1_l7x70"]
 [ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="1_s35yn"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="2_keasy"]
+[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="2_llar6"]
 [ext_resource type="PackedScene" uid="uid://crqocicxwiq88" path="res://src/parts_scene/camera_2d.tscn" id="3_ylioj"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="4_5pxqi"]
 [ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="5_6kjtr"]
+[ext_resource type="Script" path="res://src/parts_scripts/heart_node.gd" id="6_8reci"]
 [ext_resource type="PackedScene" uid="uid://q541ngmlpbqg" path="res://src/parts_scene/change_level.tscn" id="6_p77qq"]
+[ext_resource type="Script" path="res://src/parts_scripts/light_2d_node.gd" id="7_2u78v"]
 [ext_resource type="PackedScene" uid="uid://dorfk6jx45tth" path="res://src/parts_scene/light_2d.tscn" id="7_bfjxd"]
 [ext_resource type="PackedScene" uid="uid://d0oulqu7s2l0w" path="res://src/parts_scene/move_obj.tscn" id="8_usq63"]
 [ext_resource type="PackedScene" uid="uid://ctojymfu5dbfh" path="res://src/parts_scene/damage_zone.tscn" id="10_i1gou"]
+[ext_resource type="Script" path="res://src/parts_scripts/move_obj_node.gd" id="10_wav11"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4l8d"]
 texture = ExtResource("1_s35yn")
@@ -104,19 +108,172 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 2
 sources/1 = SubResource("TileSetAtlasSource_h4l8d")
 
+[sub_resource type="Animation" id="Animation_a1ttf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_20wds"]
 resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-130, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gydxj"]
 _data = {
+"RESET": SubResource("Animation_a1ttf"),
 "move": SubResource("Animation_20wds")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7su44"]
+size = Vector2(12.9375, 11.8125)
+
+[sub_resource type="Animation" id="Animation_0qk2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ip8ef"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-97, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1v642"]
+_data = {
+"RESET": SubResource("Animation_0qk2q"),
+"move": SubResource("Animation_ip8ef")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ake4"]
+size = Vector2(11.5, 11.9375)
+
+[sub_resource type="Animation" id="Animation_ot3jc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rjhl7"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-64, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8kxan"]
+_data = {
+"RESET": SubResource("Animation_ot3jc"),
+"move": SubResource("Animation_rjhl7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lln0t"]
+size = Vector2(15.75, 15.25)
+
+[sub_resource type="Animation" id="Animation_t0rcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5lne3"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-31.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vcmv"]
+_data = {
+"RESET": SubResource("Animation_t0rcs"),
+"move": SubResource("Animation_5lne3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6w0r"]
+size = Vector2(19.25, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sui1a"]
 size = Vector2(84, 27)
 
 [node name="map1-1" type="Node2D"]
 script = ExtResource("1_l7x70")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_llar6")]
+offset = Vector2(-100, -200)
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, -100, -200)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -127,51 +284,104 @@ offset_right = 2.0
 offset_bottom = 1.0
 
 [node name="background" type="ColorRect" parent="."]
-offset_left = -1355.0
-offset_top = -1677.0
-offset_right = 5528.0
-offset_bottom = 2107.0
+offset_left = -1543.0
+offset_top = -1752.0
+offset_right = 5340.0
+offset_bottom = 2032.0
 color = Color(0.14902, 0.14902, 0.14902, 0.65098)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_adeur")
 format = 2
-layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689, 65537, 8, 327690, 65537, 8, 327678, 65537, 7, 393214, 65537, 8, 327679, 65537, 7, 393215, 65537, 8, 262144, 65537, 7, 327680, 65537, 8, 262145, 65537, 7, 327681, 65537, 8, 262146, 65537, 7, 327682, 65537, 8, 262147, 65537, 7, 327683, 65537, 8, 262148, 65537, 7, 327684, 65537, 8, 262149, 65537, 7, 327685, 65537, 8, 262150, 65537, 7, 327686, 65537, 8, 262151, 65537, 7, 262152, 65537, 7, 262153, 65537, 7, 262154, 65537, 7, 262155, 65537, 7, 327691, 65537, 8, 262156, 65537, 7, 327692, 65537, 8, 262157, 65537, 7, 327693, 65537, 8, 262158, 65537, 7, 327694, 65537, 8, 196623, 65537, 7, 262159, 65537, 8, 327695, 65537, 8, 131088, 65537, 7, 196624, 65537, 8, 262160, 65537, 8, 327696, 65537, 8, 65553, 65537, 7, 131089, 65537, 8, 196625, 65537, 8, 262161, 65537, 8, 327697, 65537, 8, 65554, 65537, 8, 131090, 65537, 8, 196626, 65537, 8, 262162, 65537, 8, 327698, 65537, 8, 65555, 65537, 8, 131091, 65537, 8, 196627, 65537, 8, 262163, 65537, 8, 327699, 65537, 8, 65556, 131073, 8, 131092, 131073, 8, 196628, 131073, 8, 262164, 65537, 8, 327700, 65537, 8, 262165, 65537, 7, 327701, 65537, 8, 262166, 65537, 7, 327702, 65537, 8, 262167, 65537, 7, 327703, 65537, 8, 262168, 65537, 7, 327704, 65537, 8, 262169, 65537, 7, 327705, 65537, 8, 262170, 65537, 7, 327706, 65537, 8, 262171, 65537, 7, 327707, 65537, 8, 262172, 65537, 7, 327708, 65537, 8, 262173, 65537, 7, 327709, 65537, 8, 262174, 65537, 7, 327710, 65537, 8, 262175, 65537, 7, 327711, 65537, 8, 262176, 65537, 7, 327712, 65537, 8, 262177, 65537, 7, 327713, 65537, 8, 262178, 65537, 7, 327714, 65537, 8, 262179, 65537, 7, 327715, 65537, 8, 262180, 65537, 7, 327716, 65537, 8, 262181, 65537, 7, 327717, 65537, 8, 262182, 65537, 7, 327718, 65537, 8, 262183, 65537, 7, 327719, 65537, 8, 262184, 65537, 7, 327720, 65537, 8, 262185, 65537, 7, 327721, 65537, 8, 262186, 65537, 7, 327722, 65537, 8, 262187, 65537, 7, 327723, 65537, 8, 262188, 65537, 7, 327724, 65537, 8, 18, 65537, 7, 19, 65537, 7, 20, 131073, 7)
-
-[node name="Heart" parent="." instance=ExtResource("4_5pxqi")]
-position = Vector2(1299, 39)
+layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689, 65537, 8, 327690, 65537, 8, 327678, 65537, 7, 393214, 65537, 8, 327679, 65537, 7, 393215, 65537, 8, 262144, 65537, 7, 327680, 65537, 8, 262145, 65537, 7, 327681, 65537, 8, 262146, 65537, 7, 327682, 65537, 8, 262147, 65537, 7, 327683, 65537, 8, 262148, 65537, 7, 327684, 65537, 8, 262149, 65537, 7, 327685, 65537, 8, 262150, 65537, 7, 327686, 65537, 8, 262151, 65537, 7, 262152, 65537, 7, 262153, 65537, 7, 262154, 65537, 7, 262155, 65537, 7, 327691, 65537, 8, 262156, 65537, 7, 327692, 65537, 8, 262157, 65537, 7, 327693, 65537, 8, 262158, 65537, 7, 327694, 65537, 8, 196623, 65537, 7, 262159, 65537, 8, 327695, 65537, 8, 131088, 65537, 7, 196624, 65537, 8, 262160, 65537, 8, 327696, 65537, 8, 65553, 65537, 7, 131089, 65537, 8, 196625, 65537, 8, 262161, 65537, 8, 327697, 65537, 8, 65554, 65537, 8, 131090, 65537, 8, 196626, 65537, 8, 262162, 65537, 8, 327698, 65537, 8, 65555, 65537, 8, 131091, 65537, 8, 196627, 65537, 8, 262163, 65537, 8, 327699, 65537, 8, 65556, 131073, 8, 131092, 131073, 8, 196628, 131073, 8, 262164, 65537, 8, 327700, 65537, 8, 262165, 65537, 7, 327701, 65537, 8, 262166, 65537, 7, 327702, 65537, 8, 262167, 65537, 7, 327703, 65537, 8, 262168, 65537, 7, 327704, 65537, 8, 262169, 65537, 7, 327705, 65537, 8, 262170, 65537, 7, 327706, 65537, 8, 262171, 65537, 7, 327707, 65537, 8, 262172, 65537, 7, 327708, 65537, 8, 262173, 65537, 7, 327709, 65537, 8, 262181, 65537, 7, 327717, 65537, 8, 262182, 65537, 7, 327718, 65537, 8, 262183, 65537, 7, 327719, 65537, 8, 262184, 65537, 7, 327720, 65537, 8, 262185, 65537, 7, 327721, 65537, 8, 262186, 65537, 7, 327722, 65537, 8, 262187, 65537, 7, 327723, 65537, 8, 262188, 65537, 7, 327724, 65537, 8, 18, 65537, 7, 19, 65537, 7, 20, 131073, 7, 262180, 1, 7, 327716, 1, 8, 262174, 131073, 7, 327710, 131073, 8)
 
 [node name="Camera2D" parent="." instance=ExtResource("3_ylioj")]
+position = Vector2(49, 0)
 
 [node name="change_level" parent="." instance=ExtResource("6_p77qq")]
-position = Vector2(1365, 45)
+position = Vector2(1386.82, 32)
+
+[node name="Heart" type="Node2D" parent="."]
+script = ExtResource("6_8reci")
+
+[node name="Heart1" parent="Heart" instance=ExtResource("4_5pxqi")]
+position = Vector2(1299, 39)
 
 [node name="Lights" type="Node2D" parent="."]
+script = ExtResource("7_2u78v")
 
 [node name="light2d" parent="Lights" instance=ExtResource("7_bfjxd")]
-position = Vector2(635, 57)
+position = Vector2(625, -18)
 scale = Vector2(11.9336, 7.07422)
 color = Color(1, 1, 1, 0)
 shadow_color = Color(0.184314, 0.603922, 0.603922, 1)
+texture_scale = 2.29
 
-[node name="gimmick_obj" type="Node" parent="."]
+[node name="move_obj_node" type="Node" parent="."]
+script = ExtResource("10_wav11")
 
-[node name="move_obj" parent="gimmick_obj" instance=ExtResource("8_usq63")]
-position = Vector2(1153, 111)
-scale = Vector2(4, 4)
+[node name="move_obj" parent="move_obj_node" instance=ExtResource("8_usq63")]
+position = Vector2(1191, 96)
+scale = Vector2(2, 2)
 
-[node name="CollisionShape2D" parent="gimmick_obj/move_obj/AnimatableBody2D" index="1"]
-position = Vector2(1, 0)
-
-[node name="CollisionShape2D" parent="gimmick_obj/move_obj/Area2D" index="0"]
-position = Vector2(-3.25, -2)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="gimmick_obj/move_obj"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_obj_node/move_obj/Node2D/AnimatableBody2D" index="2"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_gydxj")
 }
 
+[node name="Area2D" parent="move_obj_node/move_obj" index="1"]
+position = Vector2(-75, -75.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj/Area2D" index="0"]
+position = Vector2(75.5, 75.75)
+shape = SubResource("RectangleShape2D_7su44")
+
+[node name="move_obj2" parent="move_obj_node" instance=ExtResource("8_usq63")]
+position = Vector2(1191, 31)
+scale = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_obj_node/move_obj2/Node2D/AnimatableBody2D" index="2"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_1v642")
+}
+
+[node name="Area2D" parent="move_obj_node/move_obj2" index="1"]
+position = Vector2(-2.75, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj2/Area2D" index="0"]
+position = Vector2(2.75, -5.5)
+shape = SubResource("RectangleShape2D_6ake4")
+
+[node name="move_obj3" parent="move_obj_node" instance=ExtResource("8_usq63")]
+position = Vector2(1191, -33)
+scale = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_obj_node/move_obj3/Node2D/AnimatableBody2D" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_8kxan")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj3/Area2D" index="0"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_lln0t")
+
+[node name="move_obj4" parent="move_obj_node" instance=ExtResource("8_usq63")]
+position = Vector2(1191, -99)
+scale = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_obj_node/move_obj4/Node2D/AnimatableBody2D" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_4vcmv")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj4/Area2D" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_q6w0r")
+
 [node name="Player" parent="." instance=ExtResource("2_keasy")]
+position = Vector2(49, 0)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
@@ -180,10 +390,19 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(-153, 106)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
-position = Vector2(1074, -95)
+position = Vector2(867, 4)
 shape = SubResource("RectangleShape2D_sui1a")
 
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
+[connection signal="notice_get_heart" from="Heart/Heart1" to="." method="_on_heart_1_notice_get_heart"]
+[connection signal="send_light_position" from="Lights" to="Player" method="_on_lights_send_light_position"]
+[connection signal="notice_shadow_color" from="Player" to="Lights" method="_on_player_notice_shadow_color"]
+[connection signal="notice_shadow_color" from="Player" to="Player/RayCast2D" method="_on_player_notice_shadow_color"]
+[connection signal="notice_collision_ability_move" from="Player/RayCast2D" to="move_obj_node" method="_on_ray_cast_2d_notice_collision_ability_move"]
 [connection signal="enter_damage_zone" from="damage_zone" to="CanvasLayer/in_game_ui" method="_on_damage_zone_enter_damage_zone"]
 
-[editable path="gimmick_obj/move_obj"]
+[editable path="move_obj_node/move_obj"]
+[editable path="move_obj_node/move_obj2"]
+[editable path="move_obj_node/move_obj3"]
+[editable path="move_obj_node/move_obj4"]
+[editable path="Player"]
