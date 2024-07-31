@@ -290,6 +290,10 @@ offset_bottom = 1.0
 
 [node name="Pause_panel" parent="CanvasLayer" instance=ExtResource("4_els5k")]
 visible = false
+offset_left = 290.0
+offset_top = 116.0
+offset_right = 587.0
+offset_bottom = 361.0
 
 [node name="background" type="ColorRect" parent="."]
 offset_left = -1019.0

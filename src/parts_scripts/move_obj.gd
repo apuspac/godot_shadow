@@ -11,8 +11,6 @@ var is_collision_once: bool = true
 func _ready():
 	add_to_group("Move_obj")
 	
-
-
 func gimick_on_play():
 	if is_collision_once:
 		#print_debug("collision move")
@@ -23,8 +21,4 @@ func gimick_on_play():
 func ability_move(id: RID):
 	if id == area_2d.get_rid():
 		gimick_on_play()
-
-#
-#func _on_ray_cast_2d_notice_collision_ability_move(id: RID):
-	#print("map" + str(area_2d.get_rid()))
 

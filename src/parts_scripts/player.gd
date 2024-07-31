@@ -21,12 +21,11 @@ var light_position: Array[Vector2] = []
 var light_id: Array[int] = []
 var last_use_light_index = -1
 signal notice_shadow_color(shadow_color: int)
-signal notice_collision_ability_move()
-signal notice_collision_ability_water()
-signal notice_collision_ability_bounce()
 signal notice_change_light(id: int)
 
 # ability
+var is_enter_water: bool = false
+var float_gravity: float = -700.0
 
 
 
@@ -47,6 +46,12 @@ func _physics_process(delta: float):
 
 
 func move_func(delta: float) -> void:
+	if is_enter_water:
+		water_move(delta)
+	else:
+		ground_move(delta)
+
+func ground_move(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -62,8 +67,29 @@ func move_func(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+func water_move(delta: float) -> void:
+	# Handle float in water.
+	if Input.is_action_pressed("Space"):
+		velocity.y = JUMP_VELOCITY
+	elif Input.is_action_pressed("Down"):
+		velocity.y = +200
+	else:
+		velocity.y = -200
+		
+	#if not is_on_floor():
+	velocity.y += float_gravity * delta
+	
+	if Input.is_action_just_pressed("Space"):
+		jump_wav.play()
 
-func update_animation(direction):
+	var direction = Input.get_axis("Left", "Right")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+
+func update_animation(direction) -> void:
 	if direction.x > 0:
 		animated_sprite.flip_h = false
 	elif direction.x < 0:
@@ -170,18 +196,10 @@ func closest_light() -> int:
 	
 	
 
-
+# Receive LIGHT locations.
 func _on_lights_send_light_position(light_p: Vector2, lid: int):
 	light_position.push_back(light_p)
 	light_id.push_back(lid)
 
-
-
-func collision_ability_move():
-	notice_collision_ability_move.emit()
-	
-	
-#func collision_ability_water()
-#func collision_ability_bounce()
-
-
+func _on_water_obj_node_notice_enter_water_area(inout):
+	is_enter_water = inout

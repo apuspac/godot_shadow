@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/parts_scripts/player.gd" id="1_0tk5j"]
 [ext_resource type="Texture2D" uid="uid://pau7jr6f11fa" path="res://assets/sprites/player_sprite_sheet.png" id="2_5hcuv"]
-[ext_resource type="PackedScene" path="res://src/parts_scene/player_raycast.tscn" id="3_08fip"]
+[ext_resource type="PackedScene" uid="uid://ij13812n13w3" path="res://src/parts_scene/player_raycast.tscn" id="3_08fip"]
 [ext_resource type="AudioStream" uid="uid://5bgosqdcco4h" path="res://assets/brackeys_sample/sounds/jump.wav" id="4_efusp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_815xy"]
