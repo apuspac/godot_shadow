@@ -1,21 +1,21 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0oulqu7s2l0w"]
 
 [ext_resource type="Script" path="res://src/parts_scripts/move_obj.gd" id="1_tj5vh"]
-[ext_resource type="Texture2D" uid="uid://yxre806ndm7p" path="res://assets/tile.png" id="2_6uarv"]
+[ext_resource type="Texture2D" uid="uid://dsviydktfrrgv" path="res://assets/sprites/shadow_change.png" id="2_xy23n"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pqekq"]
-atlas = ExtResource("2_6uarv")
-region = Rect2(512, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0npm"]
+atlas = ExtResource("2_xy23n")
+region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hf5mg"]
-atlas = ExtResource("2_6uarv")
-region = Rect2(640, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q0qo"]
+atlas = ExtResource("2_xy23n")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kmcd5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pqekq")
+"texture": SubResource("AtlasTexture_c0npm")
 }],
 "loop": true,
 "name": &"idle",
@@ -23,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hf5mg")
+"texture": SubResource("AtlasTexture_3q0qo")
 }],
 "loop": true,
 "name": &"on_gimmick",

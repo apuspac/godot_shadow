@@ -1,9 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://dl4orr1y8xmdq"]
+[gd_scene load_steps=35 format=3 uid="uid://dl4orr1y8xmdq"]
 
 [ext_resource type="Script" path="res://src/scripts/map1-1.gd" id="1_l7x70"]
 [ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="1_s35yn"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="2_keasy"]
-[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="2_llar6"]
+[ext_resource type="PackedScene" path="res://src/parts_scene/parallax_background.tscn" id="2_llar6"]
 [ext_resource type="PackedScene" uid="uid://crqocicxwiq88" path="res://src/parts_scene/camera_2d.tscn" id="3_ylioj"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="4_5pxqi"]
 [ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="5_6kjtr"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d0oulqu7s2l0w" path="res://src/parts_scene/move_obj.tscn" id="8_usq63"]
 [ext_resource type="PackedScene" uid="uid://ctojymfu5dbfh" path="res://src/parts_scene/damage_zone.tscn" id="10_i1gou"]
 [ext_resource type="Script" path="res://src/parts_scripts/move_obj_node.gd" id="10_wav11"]
+[ext_resource type="PackedScene" uid="uid://dfxia4yhqfq1j" path="res://src_nui/map_obj/bounce.tscn" id="15_fb2oe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4l8d"]
 texture = ExtResource("1_s35yn")
@@ -392,6 +393,9 @@ position = Vector2(-153, 106)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
 position = Vector2(867, 4)
 shape = SubResource("RectangleShape2D_sui1a")
+
+[node name="Bounce" parent="." instance=ExtResource("15_fb2oe")]
+position = Vector2(848, 128)
 
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
 [connection signal="notice_get_heart" from="Heart/Heart1" to="." method="_on_heart_1_notice_get_heart"]
