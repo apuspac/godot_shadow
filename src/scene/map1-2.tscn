@@ -377,6 +377,7 @@ position = Vector2(-75, -75.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj/Area2D" index="0"]
 position = Vector2(75.5, 75.75)
+scale = Vector2(2.775, 2.775)
 shape = SubResource("RectangleShape2D_7su44")
 
 [node name="move_obj2" parent="move_obj_node" instance=ExtResource("13_4nhn5")]
@@ -428,7 +429,8 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj4/Area2D" index="0"]
-position = Vector2(0, 0.5)
+position = Vector2(3.5, 0.5)
+scale = Vector2(1.8, 1.8)
 shape = SubResource("RectangleShape2D_q6w0r")
 
 [node name="Player" parent="." instance=ExtResource("3_kipmj")]

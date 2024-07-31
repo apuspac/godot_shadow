@@ -24,3 +24,5 @@ var player_posision_level1 = Vector2(644, 224)
 
 # visible heart
 var level1_heart:Array[bool] = [true, true, true]
+var level2_heart:Array[bool] = [true, true, true]
+var level3_heart:Array[bool] = [true, true ,true]

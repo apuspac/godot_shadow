@@ -27,7 +27,9 @@ signal notice_change_light(id: int)
 var is_enter_water: bool = false
 var float_gravity: float = -700.0
 
-
+func _ready():
+	player_light_occluder.visible = false
+	player_raycast.enabled = player_light_occluder.visible
 
 
 
@@ -102,6 +104,9 @@ func update_animation(direction) -> void:
 			animated_sprite.play("idle")
 	else:
 		animated_sprite.play("jump")
+	
+	if Input.is_action_just_pressed("A"):
+		animated_sprite.play("shadow_ability")
 
 # substitude kill animation
 func flip_body(direction):
@@ -135,6 +140,8 @@ func change_visible_ray():
 	if Input.is_action_just_pressed("A"):
 		player_light_occluder.visible = !player_light_occluder.visible
 		player_raycast.enabled = player_light_occluder.visible
+		animated_sprite.play("shadow_ability")
+		
 
 
 func change_ray_color():

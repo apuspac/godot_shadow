@@ -43,7 +43,8 @@ collision_layer = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/AnimatableBody2D"]
 sprite_frames = SubResource("SpriteFrames_kmcd5")
-animation = &"idle"
+animation = &"on_gimmick"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_i2fqf")
