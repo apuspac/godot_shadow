@@ -62,10 +62,13 @@ func update_animation(direction):
 	elif direction.x < 0:
 		animated_sprite.flip_h = true
 		
-	if direction.x != 0:
-		animated_sprite.play("run")
+	if is_on_floor():
+		if direction.x != 0:
+			animated_sprite.play("run")
+		else:
+			animated_sprite.play("idle")
 	else:
-		animated_sprite.play("idle")
+		animated_sprite.play("jump")
 
 # substitude kill animation
 func flip_body(direction):
