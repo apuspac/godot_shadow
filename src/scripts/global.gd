@@ -21,6 +21,8 @@ func reset_player_hp() -> void:
 
 # store player position for scene change
 var player_posision_level1 = Vector2(644, 224)
+var player_posision_level2 = Vector2(212, 526)
+var player_posision_level3 = Vector2(645, 915)
 
 # visible heart
 var level1_heart:Array[bool] = [true, true, true]

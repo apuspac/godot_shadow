@@ -349,25 +349,42 @@ color = Color(0.14902, 0.14902, 0.14902, 0.65098)
 position = Vector2(-1, 0)
 tile_set = SubResource("TileSet_adeur")
 format = 2
-layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689, 65537, 8, 327690, 65537, 8, 327678, 65537, 7, 393214, 65537, 8, 327679, 65537, 7, 393215, 65537, 8, 262144, 65537, 7, 327680, 65537, 8, 262145, 65537, 7, 327681, 65537, 8, 262146, 65537, 7, 327682, 65537, 8, 262147, 65537, 7, 327683, 65537, 8, 262148, 65537, 7, 327684, 65537, 8, 262149, 65537, 7, 327685, 65537, 8, 262150, 65537, 7, 327686, 65537, 8, 262151, 65537, 7, 262152, 65537, 7, 262153, 65537, 7, 262154, 65537, 7, 262155, 131073, 7, 327691, 131073, 8, 262181, 65537, 8, 327717, 65537, 8, 262182, 65537, 7, 327718, 65537, 8, 262183, 65537, 7, 327719, 65537, 8, 262184, 65537, 7, 327720, 65537, 8, 262185, 65537, 7, 327721, 65537, 8, 262186, 65537, 7, 327722, 65537, 8, 262187, 65537, 7, 327723, 65537, 8, 262188, 65537, 7, 327724, 65537, 8, 262180, 65537, 8, 327716, 65537, 8, -458752, 65537, 805306376, -393216, 65537, 805306375, -458751, 65537, 805306376, -393215, 65537, 805306375, -458750, 65537, 805306376, -393214, 65537, 805306375, -458749, 65537, 805306376, -393213, 65537, 805306375, -458748, 65537, 805306376, -393212, 65537, 805306375, -458747, 65537, 805306376, -393211, 65537, 805306375, -458746, 65537, 805306376, -393210, 65537, 805306375, -458745, 65537, 805306376, -393209, 65537, 805306375, -458744, 65537, 805306376, -393208, 65537, 805306375, -458743, 65537, 805306376, -393207, 65537, 805306375, -458742, 65537, 805306376, -393206, 65537, 805306375, -458741, 65537, 805306376, -393205, 65537, 805306375, -458740, 65537, 805306376, -393204, 65537, 805306375, -458739, 65537, 805306376, -393203, 65537, 805306375, -458738, 65537, 805306376, -393202, 65537, 805306375, -458737, 65537, 805306376, -393201, 65537, 805306375, -458736, 65537, 805306376, -393200, 65537, 805306375, -458735, 65537, 805306376, -393199, 65537, 805306375, -458734, 65537, 805306376, -393198, 65537, 805306375, -458733, 65537, 805306376, -393197, 65537, 805306375, -458732, 65537, 805306376, -393196, 65537, 805306375, -458731, 65537, 805306376, -393195, 65537, 805306375, -458730, 65537, 805306376, -393194, 65537, 805306375, -458729, 65537, 805306376, -393193, 65537, 805306375, -458728, 65537, 805306376, -393192, 65537, 805306375, -458727, 65537, 805306376, -393191, 65537, 805306375, -458726, 65537, 805306376, -393190, 65537, 805306375, -458725, 65537, 805306376, -393189, 65537, 805306375, -458724, 65537, 805306376, -393188, 65537, 805306375, -458723, 65537, 805306376, -393187, 65537, 805306375, -458722, 65537, 805306376, -393186, 65537, 805306375, -458721, 65537, 805306376, -393185, 65537, 805306375, -458720, 65537, 805306376, -393184, 65537, 805306375, -458719, 65537, 805306376, -393183, 65537, 805306375, -458718, 65537, 805306376, -393182, 65537, 805306375, -458717, 65537, 805306376, -393181, 65537, 805306375, -458716, 65537, 805306376, -393180, 65537, 805306375, -458715, 65537, 805306376, -393179, 65537, 805306375, -458714, 65537, 805306376, -393178, 65537, 805306375, -458713, 65537, 805306376, -393177, 65537, 805306375, -458712, 65537, 805306376, -393176, 65537, 805306375, -458711, 65537, 805306376, -393175, 65537, 805306375, -458710, 65537, 805306376, -393174, 65537, 805306375, -458709, 65537, 805306376, -393173, 65537, 805306375, -458708, 65537, 805306376, -393172, 65537, 805306375, -458707, 65537, 805306376, -393171, 65537, 805306375, -131037, 1, 7, -65501, 1, 8, 35, 1, 8, 65571, 1, 8, 131107, 1, 8, 196643, 1, 8, 262179, 1, 8, 327715, 1, 8, 589847, 65537, 7, 655383, 65537, 8, 589848, 65537, 7, 655384, 65537, 8, 589849, 65537, 7, 655385, 65537, 8, 589850, 65537, 7, 655386, 65537, 8, 589851, 65537, 7, 655387, 65537, 8, 589852, 65537, 7, 655388, 65537, 8, 589853, 65537, 7, 655389, 65537, 8, 589854, 65537, 7, 655390, 65537, 8, 589855, 65537, 7, 655391, 65537, 8, 589856, 65537, 7, 655392, 65537, 8, 589857, 65537, 7, 655393, 65537, 8, 589858, 65537, 7, 655394, 65537, 8, 393251, 1, 8, 458787, 1, 8, 524323, 1, 8, 589859, 65537, 8, 655395, 65537, 8, 196614, 262145, 8, 196615, 262145, 8, 196646, 262145, 8, 196647, 262145, 8, 65572, 65537, 7, 131108, 65537, 8, 65573, 131073, 7, 131109, 131073, 8, 196645, 131073, 8, 196644, 65537, 8, 589836, 65537, 8, 655372, 65537, 8, 589837, 65537, 8, 655373, 65537, 8, 589838, 65537, 7, 655374, 65537, 8, 589839, 65537, 7, 655375, 65537, 8, 589840, 65537, 7, 655376, 65537, 8, 589841, 65537, 7, 655377, 65537, 8, 589842, 65537, 7, 655378, 65537, 8, 589843, 65537, 7, 655379, 65537, 8, 589844, 65537, 7, 655380, 65537, 8, 589845, 65537, 7, 655381, 65537, 8, 589846, 65537, 7, 655382, 65537, 8, 393227, 65537, 8, 458763, 65537, 8, 524299, 65537, 8, 589835, 65537, 8, 655371, 65537, 8, 524300, 65537, 8, 458764, 65537, 8, 458765, 131073, 7, 524301, 131073, 8, 393228, 131073, 7, -327675, 65537, 8, -327674, 65537, 8, -262137, 65537, 8, -196602, 65537, 8, -196603, 65537, 8, -131065, 65537, 8, -65530, 65537, 8, -65531, 65537, 8)
+layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689, 65537, 8, 327690, 65537, 8, 327678, 65537, 7, 393214, 65537, 8, 327679, 65537, 7, 393215, 65537, 8, 262144, 65537, 7, 327680, 65537, 8, 262145, 65537, 7, 327681, 65537, 8, 262146, 65537, 7, 327682, 65537, 8, 262147, 65537, 7, 327683, 65537, 8, 262148, 65537, 7, 327684, 65537, 8, 262149, 65537, 7, 327685, 65537, 8, 262150, 65537, 7, 327686, 65537, 8, 262151, 65537, 7, 262152, 65537, 7, 262153, 65537, 7, 262154, 65537, 7, 262155, 131073, 7, 327691, 131073, 8, 196614, 262145, 8, 196615, 262145, 8, -327675, 65537, 8, -327674, 65537, 8, -262137, 65537, 8, -196602, 65537, 8, -196603, 65537, 8, -131065, 65537, 8, -65530, 65537, 8, -65531, 65537, 8, -786379, 1, 8, -720843, 1, 8, -655307, 1, 8, -589771, 1, 8, -524235, 1, 8, -786378, 65537, 7, -720842, 65537, 8, -655306, 65537, 8, -589770, 65537, 8, -524234, 65537, 8, -786377, 131073, 7, -720841, 131073, 8, -655305, 131073, 8, -589769, 65537, 8, -524233, 65537, 8, -655304, 262145, 8, -589768, 65537, 7, -524232, 65537, 8, -655303, 262145, 8, -589767, 65537, 7, -524231, 65537, 8, -589766, 65537, 7, -524230, 65537, 8, -589765, 65537, 7, -524229, 65537, 8, -589764, 65537, 7, -524228, 65537, 8, -589763, 65537, 7, -524227, 65537, 8, -589762, 65537, 7, -524226, 65537, 8)
 
 [node name="Camera2D" parent="." instance=ExtResource("6_qi351")]
 position = Vector2(49, 0)
 
 [node name="change_level" parent="." instance=ExtResource("7_f3x46")]
-position = Vector2(1386.82, 32)
+position = Vector2(1955, -380)
 
 [node name="Heart" type="Node2D" parent="."]
+position = Vector2(-716, 188)
 script = ExtResource("8_046cx")
 
 [node name="Heart1" parent="Heart" instance=ExtResource("9_g7sjw")]
-position = Vector2(1299, 39)
+position = Vector2(1858, -373)
 
 [node name="Lights" type="Node2D" parent="."]
 script = ExtResource("10_eklwb")
 
 [node name="light2d" type="PointLight2D" parent="Lights"]
-position = Vector2(955, 512)
+position = Vector2(24, 6)
+scale = Vector2(9.42969, 7.69922)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_h031t")
+texture_scale = 4.01
+script = ExtResource("11_j1152")
+
+[node name="light2d2" type="PointLight2D" parent="Lights"]
+position = Vector2(1656, 54)
+scale = Vector2(9.42969, 7.69922)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_h031t")
+texture_scale = 4.01
+script = ExtResource("11_j1152")
+
+[node name="light2d3" type="PointLight2D" parent="Lights"]
+position = Vector2(1151, -1236)
 scale = Vector2(9.42969, 7.69922)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_h031t")
@@ -467,7 +484,7 @@ remote_path = NodePath("../../Camera2D")
 script = ExtResource("15_myosf")
 
 [node name="water_obj" parent="water_obj_node" instance=ExtResource("16_j688q")]
-position = Vector2(549, 68)
+position = Vector2(550, 68)
 
 [node name="Node2D" parent="water_obj_node/water_obj" index="0"]
 scale = Vector2(10, 10)
@@ -502,7 +519,7 @@ position = Vector2(3, 26)
 shape = SubResource("RectangleShape2D_ap4db")
 
 [node name="water_obj3" parent="water_obj_node" instance=ExtResource("16_j688q")]
-position = Vector2(1025, -21)
+position = Vector2(1044, 29)
 
 [node name="Node2D" parent="water_obj_node/water_obj3" index="0"]
 scale = Vector2(10, 10)
@@ -513,6 +530,96 @@ position = Vector2(-0.1, 2.5)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj3/Node2D/AnimatableBody2D" index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj3/Area2DforRaycast" index="0"]
+position = Vector2(-0.125, 24.5)
+shape = SubResource("RectangleShape2D_2otqi")
+
+[node name="water_obj4" parent="water_obj_node" instance=ExtResource("16_j688q")]
+position = Vector2(1461, -141)
+
+[node name="Node2D" parent="water_obj_node/water_obj4" index="0"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj4/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(-0.1, 2.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj4/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj4/Area2DforRaycast" index="0"]
+position = Vector2(-0.125, 24.5)
+shape = SubResource("RectangleShape2D_2otqi")
+
+[node name="water_obj5" parent="water_obj_node" instance=ExtResource("16_j688q")]
+position = Vector2(1248, -425)
+
+[node name="Node2D" parent="water_obj_node/water_obj5" index="0"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj5/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(-0.1, 2.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj5/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj5/Area2DforRaycast" index="0"]
+position = Vector2(-0.125, 24.5)
+shape = SubResource("RectangleShape2D_2otqi")
+
+[node name="water_obj6" parent="water_obj_node" instance=ExtResource("16_j688q")]
+position = Vector2(799, -238)
+
+[node name="Node2D" parent="water_obj_node/water_obj6" index="0"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj6/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(-0.1, 2.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj6/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj6/Area2DforRaycast" index="0"]
+position = Vector2(-0.125, 24.5)
+shape = SubResource("RectangleShape2D_2otqi")
+
+[node name="water_obj7" parent="water_obj_node" instance=ExtResource("16_j688q")]
+position = Vector2(1280, 31)
+
+[node name="Node2D" parent="water_obj_node/water_obj7" index="0"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj7/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(-0.1, 2.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj7/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj7/Area2DforRaycast" index="0"]
+position = Vector2(-0.125, 24.5)
+shape = SubResource("RectangleShape2D_2otqi")
+
+[node name="water_obj8" parent="water_obj_node" instance=ExtResource("16_j688q")]
+position = Vector2(1026, -424)
+
+[node name="Node2D" parent="water_obj_node/water_obj8" index="0"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj8/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(-0.1, 2.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj8/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj8/Area2DforRaycast" index="0"]
+position = Vector2(-0.125, 24.5)
+shape = SubResource("RectangleShape2D_2otqi")
+
+[node name="water_obj9" parent="water_obj_node" instance=ExtResource("16_j688q")]
+position = Vector2(1517, -355)
+
+[node name="Node2D" parent="water_obj_node/water_obj9" index="0"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj9/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(-0.1, 2.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj9/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj9/Area2DforRaycast" index="0"]
 position = Vector2(-0.125, 24.5)
 shape = SubResource("RectangleShape2D_2otqi")
 
@@ -553,3 +660,9 @@ shape = SubResource("RectangleShape2D_k1np3")
 [editable path="water_obj_node/water_obj"]
 [editable path="water_obj_node/water_obj2"]
 [editable path="water_obj_node/water_obj3"]
+[editable path="water_obj_node/water_obj4"]
+[editable path="water_obj_node/water_obj5"]
+[editable path="water_obj_node/water_obj6"]
+[editable path="water_obj_node/water_obj7"]
+[editable path="water_obj_node/water_obj8"]
+[editable path="water_obj_node/water_obj9"]

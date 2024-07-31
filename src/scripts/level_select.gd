@@ -44,11 +44,11 @@ func _on_change_level_enter_change_area():
 
 
 func _on_change_level_2_enter_change_area():
-	get_tree().change_scene_to_file("res://src/scene/map1-1.tscn")
+	get_tree().change_scene_to_file("res://src/scene/level2.tscn")
 
 
 func _on_change_level_3_enter_change_area():
-	get_tree().change_scene_to_file("res://src/scene/map1-1.tscn")
+	get_tree().change_scene_to_file("res://src/scene/level3.tscn")
 
 
 func _on_item_collect_enter_collect_true():
