@@ -23,9 +23,16 @@ var last_use_light_index = -1
 signal notice_shadow_color(shadow_color: int)
 signal notice_change_light(id: int)
 
-# ability
+# ability water
 var is_enter_water: bool = false
 var float_gravity: float = -700.0
+
+# ability bounce
+var is_enter_bounce: bool = false
+var is_bounce_wakeup: bool = false
+var bounce_force: float = -700.0
+var bounce_timer: float = 0.0
+var boucne_dulation: float = 0.1
 
 func _ready():
 	player_light_occluder.visible = false
@@ -37,6 +44,8 @@ func _process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0
 	change_visible_ray()
 	change_ray_color()
+
+
 
 func _physics_process(delta: float):
 	var direction = Input.get_vector("Left", "Right", "Up", "Down")
@@ -50,6 +59,8 @@ func _physics_process(delta: float):
 func move_func(delta: float) -> void:
 	if is_enter_water:
 		water_move(delta)
+	elif is_enter_bounce:
+		bounce_move(delta)
 	else:
 		ground_move(delta)
 
@@ -89,6 +100,33 @@ func water_move(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+func bounce_move(delta: float) -> void:
+	if is_bounce_wakeup:	
+		velocity.y = bounce_force
+		bounce_timer = boucne_dulation
+	else:
+		if bounce_timer > 0:
+			bounce_timer -= delta
+		else:
+			velocity.y += bounce_force * delta
+			is_bounce_wakeup = true
+		
+		if not is_on_floor():
+			velocity.y += gravity * delta
+
+		# Handle jump.
+		if Input.is_action_just_pressed("Space") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			jump_wav.play()
+			
+
+		var direction = Input.get_axis("Left", "Right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+
 
 
 func update_animation(direction) -> void:
@@ -210,3 +248,9 @@ func _on_lights_send_light_position(light_p: Vector2, lid: int):
 
 func _on_water_obj_node_notice_enter_water_area(inout):
 	is_enter_water = inout
+
+
+func _on_bounce_obj_node_notice_enter_bounce_area(inout):
+	is_enter_bounce = inout
+	is_bounce_wakeup = inout
+	

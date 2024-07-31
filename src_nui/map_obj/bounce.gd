@@ -4,6 +4,7 @@ signal notice_bounce_area(inout: bool)
 
 @onready var bounce_collision = $bounce_body/CollisionShape2D
 @onready var bounce_area = $bounce_area
+@onready var parent = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,8 +22,10 @@ func _on_ray_cast_2d_notice_collision_ability_bounce():
 
 
 func _on_bounce_area_body_entered(body):
-	notice_bounce_area.emit(true)
+	parent.enter_bounce_area(true)
+	
+
 
 
 func _on_bounce_area_body_exited(body):
-	notice_bounce_area.emit(false)
+	parent.enter_bounce_area(false)
