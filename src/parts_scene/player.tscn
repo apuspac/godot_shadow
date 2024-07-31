@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/parts_scripts/player.gd" id="1_0tk5j"]
 [ext_resource type="Texture2D" uid="uid://pau7jr6f11fa" path="res://assets/sprites/player_sprite_sheet.png" id="2_5hcuv"]
-[ext_resource type="PackedScene" path="res://src/parts_scene/player_raycast.tscn" id="3_08fip"]
+[ext_resource type="PackedScene" uid="uid://ij13812n13w3" path="res://src/parts_scene/player_raycast.tscn" id="3_08fip"]
 [ext_resource type="AudioStream" uid="uid://5bgosqdcco4h" path="res://assets/brackeys_sample/sounds/jump.wav" id="4_efusp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_815xy"]
@@ -155,8 +155,10 @@ script = ExtResource("1_0tk5j")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -32)
 sprite_frames = SubResource("SpriteFrames_rn5f4")
-animation = &"run"
+animation = &"shadow_ability"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.671144
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -27)
@@ -165,12 +167,11 @@ shape = SubResource("CapsuleShape2D_5verq")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
-position = Vector2(3, 1)
+position = Vector2(3, 31)
 occluder = SubResource("OccluderPolygon2D_jqmed")
 
 [node name="RayCast2D" parent="." instance=ExtResource("3_08fip")]
-visible = false
+position = Vector2(1, -26)
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_efusp")

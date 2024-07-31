@@ -1,11 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://dl4orr1y8xmdq"]
+[gd_scene load_steps=37 format=3 uid="uid://dl4orr1y8xmdq"]
 
-[ext_resource type="Script" path="res://src/scripts/map1-1.gd" id="1_l7x70"]
+[ext_resource type="Script" path="res://src/scripts/map1-1.gd" id="1_fuwxp"]
 [ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="1_s35yn"]
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="2_keasy"]
-[ext_resource type="PackedScene" path="res://src/parts_scene/parallax_background.tscn" id="2_llar6"]
+[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="2_llar6"]
 [ext_resource type="PackedScene" uid="uid://crqocicxwiq88" path="res://src/parts_scene/camera_2d.tscn" id="3_ylioj"]
 [ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="4_5pxqi"]
+[ext_resource type="PackedScene" uid="uid://cgi1p5hsqog2h" path="res://src/parts_scene/pause_panel.tscn" id="4_els5k"]
 [ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="5_6kjtr"]
 [ext_resource type="Script" path="res://src/parts_scripts/heart_node.gd" id="6_8reci"]
 [ext_resource type="PackedScene" uid="uid://q541ngmlpbqg" path="res://src/parts_scene/change_level.tscn" id="6_p77qq"]
@@ -14,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://d0oulqu7s2l0w" path="res://src/parts_scene/move_obj.tscn" id="8_usq63"]
 [ext_resource type="PackedScene" uid="uid://ctojymfu5dbfh" path="res://src/parts_scene/damage_zone.tscn" id="10_i1gou"]
 [ext_resource type="Script" path="res://src/parts_scripts/move_obj_node.gd" id="10_wav11"]
-[ext_resource type="PackedScene" uid="uid://dfxia4yhqfq1j" path="res://src_nui/map_obj/bounce.tscn" id="15_fb2oe"]
+[ext_resource type="PackedScene" uid="uid://btqqpkoks2vdy" path="res://src/parts_scene/kill_zone.tscn" id="15_mjkrf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4l8d"]
 texture = ExtResource("1_s35yn")
@@ -268,8 +269,11 @@ size = Vector2(19.25, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sui1a"]
 size = Vector2(84, 27)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1np3"]
+size = Vector2(2638, 156.5)
+
 [node name="map1-1" type="Node2D"]
-script = ExtResource("1_l7x70")
+script = ExtResource("1_fuwxp")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_llar6")]
 offset = Vector2(-100, -200)
@@ -284,17 +288,24 @@ offset_top = 1.0
 offset_right = 2.0
 offset_bottom = 1.0
 
+[node name="Pause_panel" parent="CanvasLayer" instance=ExtResource("4_els5k")]
+visible = false
+offset_left = 290.0
+offset_top = 116.0
+offset_right = 587.0
+offset_bottom = 361.0
+
 [node name="background" type="ColorRect" parent="."]
-offset_left = -1543.0
-offset_top = -1752.0
-offset_right = 5340.0
-offset_bottom = 2032.0
+offset_left = -1019.0
+offset_top = -2065.0
+offset_right = 5864.0
+offset_bottom = 1719.0
 color = Color(0.14902, 0.14902, 0.14902, 0.65098)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_adeur")
 format = 2
-layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689, 65537, 8, 327690, 65537, 8, 327678, 65537, 7, 393214, 65537, 8, 327679, 65537, 7, 393215, 65537, 8, 262144, 65537, 7, 327680, 65537, 8, 262145, 65537, 7, 327681, 65537, 8, 262146, 65537, 7, 327682, 65537, 8, 262147, 65537, 7, 327683, 65537, 8, 262148, 65537, 7, 327684, 65537, 8, 262149, 65537, 7, 327685, 65537, 8, 262150, 65537, 7, 327686, 65537, 8, 262151, 65537, 7, 262152, 65537, 7, 262153, 65537, 7, 262154, 65537, 7, 262155, 65537, 7, 327691, 65537, 8, 262156, 65537, 7, 327692, 65537, 8, 262157, 65537, 7, 327693, 65537, 8, 262158, 65537, 7, 327694, 65537, 8, 196623, 65537, 7, 262159, 65537, 8, 327695, 65537, 8, 131088, 65537, 7, 196624, 65537, 8, 262160, 65537, 8, 327696, 65537, 8, 65553, 65537, 7, 131089, 65537, 8, 196625, 65537, 8, 262161, 65537, 8, 327697, 65537, 8, 65554, 65537, 8, 131090, 65537, 8, 196626, 65537, 8, 262162, 65537, 8, 327698, 65537, 8, 65555, 65537, 8, 131091, 65537, 8, 196627, 65537, 8, 262163, 65537, 8, 327699, 65537, 8, 65556, 131073, 8, 131092, 131073, 8, 196628, 131073, 8, 262164, 65537, 8, 327700, 65537, 8, 262165, 65537, 7, 327701, 65537, 8, 262166, 65537, 7, 327702, 65537, 8, 262167, 65537, 7, 327703, 65537, 8, 262168, 65537, 7, 327704, 65537, 8, 262169, 65537, 7, 327705, 65537, 8, 262170, 65537, 7, 327706, 65537, 8, 262171, 65537, 7, 327707, 65537, 8, 262172, 65537, 7, 327708, 65537, 8, 262173, 65537, 7, 327709, 65537, 8, 262181, 65537, 7, 327717, 65537, 8, 262182, 65537, 7, 327718, 65537, 8, 262183, 65537, 7, 327719, 65537, 8, 262184, 65537, 7, 327720, 65537, 8, 262185, 65537, 7, 327721, 65537, 8, 262186, 65537, 7, 327722, 65537, 8, 262187, 65537, 7, 327723, 65537, 8, 262188, 65537, 7, 327724, 65537, 8, 18, 65537, 7, 19, 65537, 7, 20, 131073, 7, 262180, 1, 7, 327716, 1, 8, 262174, 131073, 7, 327710, 131073, 8)
+layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689, 65537, 8, 327690, 65537, 8, 327678, 65537, 7, 393214, 65537, 8, 327679, 65537, 7, 393215, 65537, 8, 262144, 65537, 7, 327680, 65537, 8, 262145, 65537, 7, 327681, 65537, 8, 262146, 65537, 7, 327682, 65537, 8, 262147, 65537, 7, 327683, 65537, 8, 262148, 65537, 7, 327684, 65537, 8, 262149, 65537, 7, 327685, 65537, 8, 262150, 65537, 7, 327686, 65537, 8, 262151, 65537, 7, 262152, 65537, 7, 262153, 65537, 7, 262154, 65537, 7, 262155, 65537, 7, 327691, 65537, 8, 262156, 65537, 7, 327692, 65537, 8, 262157, 65537, 7, 327693, 65537, 8, 262158, 65537, 7, 327694, 65537, 8, 196623, 65537, 7, 262159, 65537, 8, 327695, 65537, 8, 131088, 65537, 7, 196624, 65537, 8, 262160, 65537, 8, 327696, 65537, 8, 65553, 65537, 7, 131089, 65537, 8, 196625, 65537, 8, 262161, 65537, 8, 327697, 65537, 8, 65554, 65537, 8, 131090, 65537, 8, 196626, 65537, 8, 262162, 65537, 8, 327698, 65537, 8, 65555, 65537, 8, 131091, 65537, 8, 196627, 65537, 8, 262163, 65537, 8, 327699, 65537, 8, 65556, 131073, 8, 131092, 131073, 8, 196628, 131073, 8, 262164, 65537, 8, 327700, 65537, 8, 262165, 65537, 7, 327701, 65537, 8, 262166, 65537, 7, 327702, 65537, 8, 262167, 65537, 7, 327703, 65537, 8, 262168, 65537, 7, 327704, 65537, 8, 262169, 65537, 7, 327705, 65537, 8, 262170, 65537, 7, 327706, 65537, 8, 262171, 65537, 7, 327707, 65537, 8, 262172, 65537, 7, 327708, 65537, 8, 262173, 65537, 7, 327709, 65537, 8, 262181, 65537, 7, 327717, 65537, 8, 262182, 65537, 7, 327718, 65537, 8, 262183, 65537, 7, 327719, 65537, 8, 262184, 65537, 7, 327720, 65537, 8, 262185, 65537, 7, 327721, 65537, 8, 262186, 65537, 7, 327722, 65537, 8, 262187, 65537, 7, 327723, 65537, 8, 262188, 65537, 7, 327724, 65537, 8, 18, 65537, 7, 19, 65537, 7, 20, 131073, 7, 262180, 1, 7, 327716, 1, 8, 262174, 131073, 7, 327710, 131073, 8, -196603, 65537, 2, -262138, 65537, 2, -196602, 65537, 2, -131066, 65537, 2, -65530, 65537, 2, 6, 65537, 2)
 
 [node name="Camera2D" parent="." instance=ExtResource("3_ylioj")]
 position = Vector2(49, 0)
@@ -312,8 +323,8 @@ position = Vector2(1299, 39)
 script = ExtResource("7_2u78v")
 
 [node name="light2d" parent="Lights" instance=ExtResource("7_bfjxd")]
-position = Vector2(625, -18)
-scale = Vector2(11.9336, 7.07422)
+position = Vector2(770, 14)
+scale = Vector2(13.489, 7.996)
 color = Color(1, 1, 1, 0)
 shadow_color = Color(0.184314, 0.603922, 0.603922, 1)
 texture_scale = 2.29
@@ -394,16 +405,23 @@ position = Vector2(-153, 106)
 position = Vector2(867, 4)
 shape = SubResource("RectangleShape2D_sui1a")
 
-[node name="Bounce" parent="." instance=ExtResource("15_fb2oe")]
-position = Vector2(848, 128)
+[node name="Killzone" parent="." instance=ExtResource("15_mjkrf")]
+position = Vector2(-276, 204)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(877, 65.75)
+shape = SubResource("RectangleShape2D_k1np3")
+
+[connection signal="jump_level_select" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_level_select"]
+[connection signal="jump_main_menu" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_main_menu"]
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
-[connection signal="notice_get_heart" from="Heart/Heart1" to="." method="_on_heart_1_notice_get_heart"]
 [connection signal="send_light_position" from="Lights" to="Player" method="_on_lights_send_light_position"]
 [connection signal="notice_shadow_color" from="Player" to="Lights" method="_on_player_notice_shadow_color"]
 [connection signal="notice_shadow_color" from="Player" to="Player/RayCast2D" method="_on_player_notice_shadow_color"]
 [connection signal="notice_collision_ability_move" from="Player/RayCast2D" to="move_obj_node" method="_on_ray_cast_2d_notice_collision_ability_move"]
 [connection signal="enter_damage_zone" from="damage_zone" to="CanvasLayer/in_game_ui" method="_on_damage_zone_enter_damage_zone"]
+[connection signal="enter_kill_zone" from="damage_zone" to="Player" method="_on_damage_zone_enter_kill_zone"]
+[connection signal="enter_kill_zone" from="Killzone" to="Player" method="_on_killzone_enter_kill_zone"]
 
 [editable path="move_obj_node/move_obj"]
 [editable path="move_obj_node/move_obj2"]

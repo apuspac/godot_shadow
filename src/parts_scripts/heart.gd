@@ -10,7 +10,6 @@ var is_get_heart: bool = false
 @onready var animation_player = $AnimationPlayer
 
 func _on_body_entered(body):
-	print(is_get_heart, Global.level1_heart[0])
 	if is_get_heart == false :
 		Global.add_player_item_heart()
 		parent.get_heart_children()

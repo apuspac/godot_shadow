@@ -30,10 +30,11 @@ func update_HP():
 
 func update_item_heart():
 	var item_text = ""
-	for i in range(0, Global.player_item_heart):
+	for i in range(0, Global.player_item_heart[Global.progress]):
 		item_text += "♡"
 	
 	item_label.text = item_text
+	print("haert",Global.player_item_heart)
 
 
 

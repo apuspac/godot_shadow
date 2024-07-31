@@ -1,0 +1,769 @@
+[gd_scene load_steps=71 format=3 uid="uid://hthx0qbei6nq"]
+
+[ext_resource type="Script" path="res://src/scripts/map3-2.gd" id="1_fbxct"]
+[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="2_7d48o"]
+[ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="3_41ihp"]
+[ext_resource type="PackedScene" uid="uid://cgi1p5hsqog2h" path="res://src/parts_scene/pause_panel.tscn" id="4_7qaop"]
+[ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="5_aet5g"]
+[ext_resource type="PackedScene" uid="uid://crqocicxwiq88" path="res://src/parts_scene/camera_2d.tscn" id="6_y5kop"]
+[ext_resource type="PackedScene" uid="uid://q541ngmlpbqg" path="res://src/parts_scene/change_level.tscn" id="7_0w2ip"]
+[ext_resource type="Script" path="res://src/parts_scripts/heart_node.gd" id="8_054cc"]
+[ext_resource type="PackedScene" uid="uid://c1npvq2gqij0p" path="res://src/parts_scene/heart.tscn" id="9_ofajm"]
+[ext_resource type="Script" path="res://src/parts_scripts/light_2d_node.gd" id="10_8jaoj"]
+[ext_resource type="Script" path="res://src/parts_scripts/light_2d.gd" id="11_8y7ks"]
+[ext_resource type="Script" path="res://src/parts_scripts/move_obj_node.gd" id="12_ei7e1"]
+[ext_resource type="PackedScene" uid="uid://d0oulqu7s2l0w" path="res://src/parts_scene/move_obj.tscn" id="13_fq6qx"]
+[ext_resource type="Script" path="res://src/parts_scripts/water_obj_node.gd" id="14_3s2cb"]
+[ext_resource type="PackedScene" uid="uid://dkcrd6qwyg2ud" path="res://src/parts_scene/water_obj.tscn" id="15_p28yb"]
+[ext_resource type="Script" path="res://src/parts_scripts/bounce_obj_node.gd" id="16_7j0vq"]
+[ext_resource type="PackedScene" uid="uid://bkigjqfcygmf3" path="res://src/parts_scene/bounce_obj.tscn" id="17_d5hbp"]
+[ext_resource type="Script" path="res://src/parts_scripts/player_bounce.gd" id="18_l1wpi"]
+[ext_resource type="Texture2D" uid="uid://pau7jr6f11fa" path="res://assets/sprites/player_sprite_sheet.png" id="19_2c6lm"]
+[ext_resource type="PackedScene" uid="uid://ctojymfu5dbfh" path="res://src/parts_scene/damage_zone.tscn" id="19_6lv7h"]
+[ext_resource type="PackedScene" uid="uid://ij13812n13w3" path="res://src/parts_scene/player_raycast.tscn" id="20_3nybk"]
+[ext_resource type="PackedScene" uid="uid://btqqpkoks2vdy" path="res://src/parts_scene/kill_zone.tscn" id="20_483ck"]
+[ext_resource type="AudioStream" uid="uid://5bgosqdcco4h" path="res://assets/brackeys_sample/sounds/jump.wav" id="21_r8y6m"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4l8d"]
+texture = ExtResource("5_aet5g")
+texture_region_size = Vector2i(32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -6.25, 16, -5.75, 16, 16, -16, 16)
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:7/0 = 0
+0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:7/0/physics_layer_0/angular_velocity = 0.0
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:8/0 = 0
+0:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:8/0/physics_layer_0/angular_velocity = 0.0
+0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:8/0 = 0
+1:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:8/0/physics_layer_0/angular_velocity = 0.0
+1:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:8/0 = 0
+2:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:8/0/physics_layer_0/angular_velocity = 0.0
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:7/0 = 0
+2:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:7/0/physics_layer_0/angular_velocity = 0.0
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:7/0 = 0
+1:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:7/0/physics_layer_0/angular_velocity = 0.0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:8/0 = 0
+4:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:8/0/physics_layer_0/angular_velocity = 0.0
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+4:5/0 = 0
+4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_0/angular_velocity = 0.0
+4:6/0 = 0
+4:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:6/0/physics_layer_0/angular_velocity = 0.0
+5:6/0 = 0
+5:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:6/0/physics_layer_0/angular_velocity = 0.0
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+5:4/0 = 0
+5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:4/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_adeur"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 2
+sources/1 = SubResource("TileSetAtlasSource_h4l8d")
+
+[sub_resource type="Gradient" id="Gradient_f75wc"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h031t"]
+gradient = SubResource("Gradient_f75wc")
+fill_from = Vector2(0.452991, 1)
+fill_to = Vector2(0.465812, 0)
+
+[sub_resource type="Animation" id="Animation_a1ttf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_20wds"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.33333, 30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gydxj"]
+_data = {
+"RESET": SubResource("Animation_a1ttf"),
+"move": SubResource("Animation_20wds")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7su44"]
+size = Vector2(12.9375, 11.8125)
+
+[sub_resource type="Animation" id="Animation_0qk2q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ip8ef"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.333336, 66.3333)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1v642"]
+_data = {
+"RESET": SubResource("Animation_0qk2q"),
+"move": SubResource("Animation_ip8ef")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ake4"]
+size = Vector2(11.5, 11.9375)
+
+[sub_resource type="Animation" id="Animation_ot3jc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rjhl7"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 66.6667)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8kxan"]
+_data = {
+"RESET": SubResource("Animation_ot3jc"),
+"move": SubResource("Animation_rjhl7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lln0t"]
+size = Vector2(15.75, 15.25)
+
+[sub_resource type="Animation" id="Animation_t0rcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5lne3"]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, 32.3333)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vcmv"]
+_data = {
+"RESET": SubResource("Animation_t0rcs"),
+"move": SubResource("Animation_5lne3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6w0r"]
+size = Vector2(19.25, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is60i"]
+size = Vector2(16.8698, 14.2806)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwf41"]
+size = Vector2(160.25, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_keibr"]
+size = Vector2(15.6, 13.3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ap4db"]
+size = Vector2(145, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2otqi"]
+size = Vector2(156.25, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfnwo"]
+size = Vector2(19.7865, 15.3381)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_815xy"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(0, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkhxg"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(176, 0, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yux7"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(0, 128, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1cuu"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(176, 128, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilylo"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(352, 128, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq5e0"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(0, 64, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_323n2"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(176, 64, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84cqd"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(352, 64, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12jly"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(528, 64, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6co67"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(0, 192, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihjes"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(176, 192, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd3tc"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(352, 192, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7wrd"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(528, 192, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxw5k"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(704, 192, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaqxw"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(880, 192, 176, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6t7o"]
+atlas = ExtResource("19_2c6lm")
+region = Rect2(1056, 192, 176, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rn5f4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_815xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkhxg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yux7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1cuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilylo")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq5e0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_323n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84cqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12jly")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6co67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihjes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd3tc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7wrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxw5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaqxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6t7o")
+}],
+"loop": true,
+"name": &"shadow_ability",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5verq"]
+radius = 12.0
+height = 52.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jqmed"]
+polygon = PackedVector2Array(-2, -62, -8, -57, -2, -52, 4, -57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sui1a"]
+size = Vector2(84, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1np3"]
+size = Vector2(2638, 156.5)
+
+[node name="map3-2" type="Node2D"]
+script = ExtResource("1_fbxct")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_7d48o")]
+offset = Vector2(-100, -200)
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, -100, -200)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="in_game_ui" parent="CanvasLayer" instance=ExtResource("3_41ihp")]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
+
+[node name="Pause_panel" parent="CanvasLayer" instance=ExtResource("4_7qaop")]
+visible = false
+offset_top = 112.0
+offset_bottom = 357.0
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -1543.0
+offset_top = -1752.0
+offset_right = 5340.0
+offset_bottom = 2032.0
+color = Color(0.14902, 0.14902, 0.14902, 0.65098)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-1, 0)
+tile_set = SubResource("TileSet_adeur")
+format = 2
+layer_0/tile_data = PackedInt32Array(327687, 65537, 8, 327688, 65537, 8, 327689, 65537, 8, 327690, 65537, 8, 327678, 65537, 7, 393214, 65537, 8, 327679, 65537, 7, 393215, 65537, 8, 262144, 65537, 7, 327680, 65537, 8, 262145, 65537, 7, 327681, 65537, 8, 262146, 65537, 7, 327682, 65537, 8, 262147, 65537, 7, 262148, 65537, 7, 262149, 65537, 7, 262150, 65537, 7, 262151, 65537, 7, 262152, 65537, 7, 262153, 65537, 7, 262154, 65537, 7, 262155, 131073, 7, 327691, 131073, 8, 262181, 65537, 8, 327717, 65537, 8, 262182, 65537, 7, 327718, 65537, 8, 262183, 65537, 7, 327719, 65537, 8, 262184, 65537, 7, 327720, 65537, 8, 262185, 65537, 7, 327721, 65537, 8, 262186, 65537, 7, 327722, 65537, 8, 262187, 65537, 7, 327723, 65537, 8, 262188, 65537, 7, 327724, 65537, 8, 262180, 65537, 8, 327716, 65537, 8, -458752, 65537, 805306376, -393216, 65537, 805306375, -458751, 65537, 805306376, -393215, 65537, 805306375, -458750, 65537, 805306376, -393214, 65537, 805306375, -458749, 65537, 805306376, -393213, 65537, 805306375, -458748, 65537, 805306376, -393212, 65537, 805306375, -458747, 65537, 805306376, -393211, 65537, 805306375, -458746, 65537, 805306376, -393210, 65537, 805306375, -458745, 65537, 805306376, -393209, 65537, 805306375, -458744, 65537, 805306376, -393208, 65537, 805306375, -458743, 65537, 805306376, -393207, 65537, 805306375, -458742, 65537, 805306376, -393206, 65537, 805306375, -458725, 65537, 805306376, -393189, 65537, 805306375, -458724, 65537, 805306376, -393188, 65537, 805306375, -458723, 65537, 805306376, -393187, 65537, 805306375, -458722, 65537, 805306376, -393186, 65537, 805306375, -458721, 65537, 805306376, -393185, 65537, 805306375, -458720, 65537, 805306376, -393184, 65537, 805306375, -458719, 65537, 805306376, -393183, 65537, 805306375, -458718, 65537, 805306376, -393182, 65537, 805306375, -458717, 65537, 805306376, -393181, 65537, 805306375, -458716, 65537, 805306376, -393180, 65537, 805306375, -458715, 65537, 805306376, -393179, 65537, 805306375, -458714, 65537, 805306376, -393178, 65537, 805306375, -458713, 65537, 805306376, -393177, 65537, 805306375, -458712, 65537, 805306376, -393176, 65537, 805306375, -458711, 65537, 805306376, -393175, 65537, 805306375, -458710, 65537, 805306376, -393174, 65537, 805306375, -458709, 65537, 805306376, -393173, 65537, 805306375, -458708, 65537, 805306376, -393172, 65537, 805306375, -458707, 65537, 8, -393171, 65537, 805306375, 65571, 1, 7, 131107, 1, 8, 196643, 1, 8, 262179, 1, 8, 327715, 1, 8, 589847, 65537, 7, 655383, 65537, 8, 589848, 65537, 7, 655384, 65537, 8, 589849, 65537, 7, 655385, 65537, 8, 589850, 65537, 7, 655386, 65537, 8, 589851, 65537, 7, 655387, 65537, 8, 589852, 65537, 7, 655388, 65537, 8, 589853, 65537, 7, 655389, 65537, 8, 589854, 65537, 7, 655390, 65537, 8, 589855, 65537, 7, 655391, 65537, 8, 589856, 65537, 7, 655392, 65537, 8, 589857, 65537, 7, 655393, 65537, 8, 589858, 65537, 7, 655394, 65537, 8, 393251, 1, 8, 458787, 1, 8, 524323, 1, 8, 589859, 65537, 8, 655395, 65537, 8, 196614, 262145, 8, 196615, 262145, 8, 196646, 262145, 8, 196647, 262145, 8, 65572, 65537, 7, 131108, 65537, 8, 65573, 131073, 7, 131109, 131073, 8, 196645, 131073, 8, 196644, 65537, 8, 589836, 65537, 8, 655372, 65537, 8, 589837, 65537, 8, 655373, 65537, 8, 589838, 65537, 7, 655374, 65537, 8, 589839, 65537, 7, 655375, 65537, 8, 589840, 65537, 7, 655376, 65537, 8, 589841, 65537, 7, 655377, 65537, 8, 589842, 65537, 7, 655378, 65537, 8, 589843, 65537, 7, 655379, 65537, 8, 589844, 65537, 7, 655380, 65537, 8, 589845, 65537, 7, 655381, 65537, 8, 589846, 65537, 7, 655382, 65537, 8, 393227, 65537, 8, 458763, 65537, 8, 524299, 65537, 8, 589835, 65537, 8, 655371, 65537, 8, 524300, 65537, 8, 458764, 65537, 8, 458765, 131073, 7, 524301, 131073, 8, 393228, 131073, 7, -262149, 65537, 2, -327684, 65537, 2, -327683, 65537, 2, -262146, 65537, 2, -196610, 65537, 2, -131075, 65537, 2, -65540, 65537, 2, -5, 65537, 2, 65531, 65537, 2, 65532, 65537, 2, 65533, 65537, 2, 65534, 65537, 2, 13, 65537, 8, 65549, 65537, 8, 14, 65537, 8, 65550, 65537, 8, 12, 65537, 7, 65548, 65537, 8, 11, 65537, 7, 65547, 65537, 8, 10, 65537, 7, 65546, 65537, 8, 15, 131073, 8, 65551, 131073, 8, -131057, 65537, 8, -65521, 65537, 8, -131058, 65537, 8, -65522, 65537, 8, -131059, 65537, 7, -65523, 65537, 8, -131056, 131073, 8, -65520, 131073, 8, -196593, 65537, 7, -196594, 65537, 7, -196592, 65537, 7, -262128, 65537, 7, -262127, 65537, 7, -262126, 65537, 7, -262125, 65537, 7, -262124, 65537, 7, -65491, 65537, 7, 45, 65537, 8, -65490, 65537, 7, 46, 65537, 8, -65489, 65537, 7, 47, 65537, 8, -65488, 65537, 7, 48, 65537, 8, -65487, 65537, 7, 49, 65537, 8, -65486, 65537, 8, 50, 65537, 8, -327630, 1, 8, -262094, 1, 8, -196558, 1, 8, -131022, 65537, 8, -458706, 65537, 8, -393170, 65537, 8, -458705, 65537, 8, -393169, 65537, 8, -458704, 65537, 8, -393168, 65537, 8, -458703, 65537, 8, -393167, 65537, 8, -458702, 65537, 8, -393166, 65537, 8, -458701, 65537, 8, -393165, 65537, 8, 327686, 65537, 8, 327685, 65537, 8, 327684, 65537, 8, 327683, 65537, 8, 393252, 65537, 8, 458788, 65537, 8, 524324, 65537, 8, 589860, 65537, 8, 655396, 65537, 8, 655397, 65537, 8, 589861, 65537, 8, 524325, 65537, 8, 458789, 65537, 8, 393253, 65537, 8, 393254, 65537, 8, 393255, 65537, 8, 393256, 65537, 8, 393257, 65537, 8, 393258, 65537, 8, 393259, 65537, 8, 393260, 65537, 8, 458796, 65537, 8, 524332, 65537, 8, 524331, 65537, 8, 458795, 65537, 8, 458794, 65537, 8, 458793, 65537, 8, 458792, 65537, 8, 458791, 65537, 8, 524327, 65537, 8, 524326, 65537, 8, 458790, 65537, 8, 524328, 65537, 8, 524329, 65537, 8, 524330, 65537, 8, 589868, 65537, 8, 589867, 65537, 8, 589866, 65537, 8, 589865, 65537, 8, 589864, 65537, 8, 589863, 65537, 8, 589862, 65537, 8, 655398, 65537, 8, 655399, 65537, 8, 655400, 65537, 8, 655401, 65537, 8, 655402, 65537, 8, 655403, 65537, 8, 655404, 65537, 8, 65581, 65537, 8, 131117, 65537, 8, 196653, 65537, 8, 262189, 65537, 8, 393226, 65537, 8, 458762, 65537, 8, 524298, 65537, 8, 589834, 65537, 8, 458750, 65537, 8, 524286, 65537, 8, 589822, 65537, 8, 655358, 65537, 8, 720894, 65537, 8, 458751, 65537, 8, 524287, 65537, 8, 589823, 65537, 8, 655359, 65537, 8, 720895, 65537, 8, 393216, 65537, 8, 458752, 65537, 8, 524288, 65537, 8, 589824, 65537, 8, 655360, 65537, 8, 393217, 65537, 8, 458753, 65537, 8, 524289, 65537, 8, 589825, 65537, 8, 655361, 65537, 8, 393218, 65537, 8, 458754, 65537, 8, 524290, 65537, 8, 589826, 65537, 8, 655362, 65537, 8, 393219, 65537, 8, 458755, 65537, 8, 524291, 65537, 8, 589827, 65537, 8, 655363, 65537, 8, 393220, 65537, 8, 458756, 65537, 8, 524292, 65537, 8, 589828, 65537, 8, 655364, 65537, 8, 393221, 65537, 8, 458757, 65537, 8, 524293, 65537, 8, 589829, 65537, 8, 655365, 65537, 8, 393222, 65537, 8, 458758, 65537, 8, 524294, 65537, 8, 589830, 65537, 8, 655366, 65537, 8, 393223, 65537, 8, 458759, 65537, 8, 524295, 65537, 8, 589831, 65537, 8, 655367, 65537, 8, 393224, 65537, 8, 458760, 65537, 8, 524296, 65537, 8, 589832, 65537, 8, 655368, 65537, 8, 393225, 65537, 8, 458761, 65537, 8, 524297, 65537, 8, 589833, 65537, 8, 655369, 65537, 8, 655370, 65537, 8, -524277, 65537, 805306376, -458741, 65537, 805306375, -524276, 65537, 805306376, -458740, 65537, 805306375, -524275, 65537, 805306376, -458739, 65537, 805306375, -524274, 65537, 805306376, -458738, 65537, 805306375, -524273, 65537, 805306376, -458737, 65537, 805306375, -524272, 65537, 805306376, -458736, 65537, 805306375, -524271, 65537, 805306376, -458735, 65537, 805306375, -524270, 65537, 805306376, -458734, 65537, 805306375, -524269, 65537, 805306376, -458733, 65537, 805306375, -524268, 65537, 805306376, -458732, 65537, 805306375, -524267, 65537, 805306376, -458731, 65537, 805306375, -524266, 65537, 805306376, -458730, 65537, 805306375, -524265, 65537, 805306376, -458729, 65537, 805306375, -524264, 65537, 805306376, -458728, 65537, 805306375, -524263, 65537, 805306376, -458727, 65537, 805306375, -524262, 65537, 805306376, -458726, 65537, 805306375, -327629, 65537, 8, -262093, 65537, 8, -196557, 65537, 8, -131021, 65537, 8, -65485, 65537, 8, 51, 65537, 8, 327677, 65537, 7, 393213, 65537, 8, 327676, 65537, 7, 393212, 65537, 8, 327675, 65537, 7, 393211, 65537, 8, 327674, 65537, 7, 393210, 65537, 8, 327673, 65537, 8, 393209, 65537, 8, -393217, 65537, 805306376, -327681, 65537, 805306375, -393218, 65537, 8, -327682, 65537, 805306375, -393221, 65537, 805306376, -327685, 65537, 805306375, -393222, 65537, 805306376, -327686, 65537, 805306375, -393220, 65537, 8, -393219, 65537, 8, -393223, 65537, 1342177287, -393224, 65537, 1342177288, -327687, 65537, 1342177287, -327688, 65537, 1342177288, -262151, 65537, 1342177287, -262152, 65537, 1342177288, -196615, 65537, 1342177287, -196616, 65537, 1342177288, -131079, 65537, 1342177287, -131080, 65537, 1342177288, -65543, 65537, 1342177287, -65544, 65537, 1342177288, -7, 65537, 1342177287, -8, 65537, 1342177288, 65529, 65537, 1342177287, 65528, 65537, 1342177288, 131065, 65537, 1342177287, 131064, 65537, 1342177288, 196601, 65537, 1342177287, 196600, 65537, 1342177288, 262137, 65537, 1342177287, 262136, 65537, 1342177288, 327672, 65537, 1342177288, 393208, 65537, 8, 458744, 65537, 8, 524280, 65537, 8, 589816, 65537, 8, 655352, 65537, 8, 720888, 65537, 8, 458745, 65537, 8, 524281, 65537, 8, 589817, 65537, 8, 655353, 65537, 8, 720889, 65537, 8, 458746, 65537, 8, 524282, 65537, 8, 589818, 65537, 8, 655354, 65537, 8, 720890, 65537, 8, 458747, 65537, 8, 524283, 65537, 8, 589819, 65537, 8, 655355, 65537, 8, 720891, 65537, 8, 458748, 65537, 8, 524284, 65537, 8, 589820, 65537, 8, 655356, 65537, 8, 720892, 65537, 8, 458749, 65537, 8, 524285, 65537, 8, 589821, 65537, 8, 655357, 65537, 8, 720893, 65537, 8)
+
+[node name="Camera2D" parent="." instance=ExtResource("6_y5kop")]
+position = Vector2(49, 0)
+
+[node name="change_level" parent="." instance=ExtResource("7_0w2ip")]
+position = Vector2(1386.82, 32)
+
+[node name="Heart" type="Node2D" parent="."]
+script = ExtResource("8_054cc")
+
+[node name="Heart1" parent="Heart" instance=ExtResource("9_ofajm")]
+position = Vector2(1299, 39)
+
+[node name="Lights" type="Node2D" parent="."]
+script = ExtResource("10_8jaoj")
+
+[node name="light2d" type="PointLight2D" parent="Lights"]
+position = Vector2(1182, 451)
+scale = Vector2(9.42969, 7.69922)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_h031t")
+texture_scale = 6.46
+script = ExtResource("11_8y7ks")
+
+[node name="move_obj_node" type="Node" parent="."]
+script = ExtResource("12_ei7e1")
+
+[node name="move_obj" parent="move_obj_node" instance=ExtResource("13_fq6qx")]
+process_mode = 4
+visible = false
+position = Vector2(779, -110)
+scale = Vector2(2, 2)
+
+[node name="Node2D" parent="move_obj_node/move_obj" index="0"]
+scale = Vector2(1.5, 1.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_obj_node/move_obj/Node2D/AnimatableBody2D" index="2"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_gydxj")
+}
+
+[node name="Area2D" parent="move_obj_node/move_obj" index="1"]
+position = Vector2(-75, -75.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj/Area2D" index="0"]
+position = Vector2(75.5, 75.75)
+shape = SubResource("RectangleShape2D_7su44")
+
+[node name="move_obj2" parent="move_obj_node" instance=ExtResource("13_fq6qx")]
+process_mode = 4
+visible = false
+position = Vector2(878, -14)
+scale = Vector2(2, 2)
+
+[node name="Node2D" parent="move_obj_node/move_obj2" index="0"]
+scale = Vector2(1.5, 1.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_obj_node/move_obj2/Node2D/AnimatableBody2D" index="2"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_1v642")
+}
+
+[node name="Area2D" parent="move_obj_node/move_obj2" index="1"]
+position = Vector2(-2.75, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj2/Area2D" index="0"]
+position = Vector2(2.75, -5.5)
+shape = SubResource("RectangleShape2D_6ake4")
+
+[node name="move_obj3" parent="move_obj_node" instance=ExtResource("13_fq6qx")]
+process_mode = 4
+visible = false
+position = Vector2(977, -14)
+scale = Vector2(2, 2)
+
+[node name="Node2D" parent="move_obj_node/move_obj3" index="0"]
+scale = Vector2(1.5, 1.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_obj_node/move_obj3/Node2D/AnimatableBody2D" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_8kxan")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj3/Area2D" index="0"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_lln0t")
+
+[node name="move_obj4" parent="move_obj_node" instance=ExtResource("13_fq6qx")]
+process_mode = 4
+visible = false
+position = Vector2(1076, -110)
+scale = Vector2(2, 2)
+
+[node name="Node2D" parent="move_obj_node/move_obj4" index="0"]
+scale = Vector2(1.5, 1.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="move_obj_node/move_obj4/Node2D/AnimatableBody2D" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_4vcmv")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="move_obj_node/move_obj4/Area2D" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_q6w0r")
+
+[node name="water_obj_node" type="Node2D" parent="."]
+script = ExtResource("14_3s2cb")
+
+[node name="water_obj" parent="water_obj_node" instance=ExtResource("15_p28yb")]
+process_mode = 4
+visible = false
+position = Vector2(549, 68)
+
+[node name="Node2D" parent="water_obj_node/water_obj" index="0"]
+scale = Vector2(10, 10)
+
+[node name="AnimatableBody2D" parent="water_obj_node/water_obj/Node2D" index="0"]
+position = Vector2(1.03964, -3.63873)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(-0.204731, 1.97904)
+shape = SubResource("RectangleShape2D_is60i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj/Area2DforRaycast" index="0"]
+position = Vector2(11.875, -11.5)
+shape = SubResource("RectangleShape2D_rwf41")
+
+[node name="water_obj2" parent="water_obj_node" instance=ExtResource("15_p28yb")]
+process_mode = 4
+visible = false
+position = Vector2(784, -6)
+
+[node name="Node2D" parent="water_obj_node/water_obj2" index="0"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj2/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(0.300002, 2.2)
+shape = SubResource("RectangleShape2D_keibr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj2/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj2/Area2DforRaycast" index="0"]
+position = Vector2(3, 26)
+shape = SubResource("RectangleShape2D_ap4db")
+
+[node name="water_obj3" parent="water_obj_node" instance=ExtResource("15_p28yb")]
+process_mode = 4
+visible = false
+position = Vector2(1025, -21)
+
+[node name="Node2D" parent="water_obj_node/water_obj3" index="0"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" parent="water_obj_node/water_obj3/Node2D/AnimatableBody2D" index="1"]
+position = Vector2(-0.1, 2.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="water_obj_node/water_obj3/Node2D/AnimatableBody2D" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water_obj_node/water_obj3/Area2DforRaycast" index="0"]
+position = Vector2(-0.125, 24.5)
+shape = SubResource("RectangleShape2D_2otqi")
+
+[node name="bounce_obj_node" type="Node2D" parent="."]
+script = ExtResource("16_7j0vq")
+
+[node name="bounce_obj" parent="bounce_obj_node" instance=ExtResource("17_d5hbp")]
+position = Vector2(614, -60)
+scale = Vector2(5.62, 5.62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounce_obj_node/bounce_obj/Area2DforRaycast" index="0"]
+position = Vector2(-0.106773, 2.33096)
+shape = SubResource("RectangleShape2D_pfnwo")
+
+[node name="bounce_obj2" parent="bounce_obj_node" instance=ExtResource("17_d5hbp")]
+position = Vector2(612, 33)
+scale = Vector2(5.62, 5.62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounce_obj_node/bounce_obj2/Area2DforRaycast" index="0"]
+position = Vector2(-0.106773, 2.33096)
+shape = SubResource("RectangleShape2D_pfnwo")
+
+[node name="bounce_obj3" parent="bounce_obj_node" instance=ExtResource("17_d5hbp")]
+position = Vector2(613, 124)
+scale = Vector2(5.62, 5.62)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounce_obj_node/bounce_obj3/Area2DforRaycast" index="0"]
+position = Vector2(-0.106773, 2.33096)
+shape = SubResource("RectangleShape2D_pfnwo")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 5
+position = Vector2(49, 0)
+collision_mask = 126
+script = ExtResource("18_l1wpi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(-1, -32)
+sprite_frames = SubResource("SpriteFrames_rn5f4")
+animation = &"shadow_ability"
+autoplay = "idle"
+frame = 3
+frame_progress = 0.671144
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(1, -27)
+shape = SubResource("CapsuleShape2D_5verq")
+
+[node name="Timer" type="Timer" parent="Player"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Player"]
+position = Vector2(3, 31)
+occluder = SubResource("OccluderPolygon2D_jqmed")
+
+[node name="RayCast2D" parent="Player" instance=ExtResource("20_3nybk")]
+position = Vector2(1, -26)
+
+[node name="jump" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("21_r8y6m")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="damage_zone" parent="." instance=ExtResource("19_6lv7h")]
+position = Vector2(-369, -284)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage_zone"]
+position = Vector2(867, 4)
+shape = SubResource("RectangleShape2D_sui1a")
+
+[node name="Killzone" parent="." instance=ExtResource("20_483ck")]
+position = Vector2(-276, 204)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(885, 216)
+shape = SubResource("RectangleShape2D_k1np3")
+
+[connection signal="jump_level_select" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_level_select"]
+[connection signal="jump_main_menu" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_main_menu"]
+[connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
+[connection signal="notice_get_heart" from="Heart/Heart1" to="." method="_on_heart_1_notice_get_heart"]
+[connection signal="send_light_position" from="Lights" to="Player" method="_on_lights_send_light_position"]
+[connection signal="notice_enter_water_area" from="water_obj_node" to="Player" method="_on_water_obj_node_notice_enter_water_area"]
+[connection signal="notice_enter_bounce_area" from="bounce_obj_node" to="Player" method="_on_bounce_obj_node_notice_enter_bounce_area"]
+[connection signal="notice_change_light" from="Player" to="Lights" method="_on_player_notice_change_light"]
+[connection signal="notice_shadow_color" from="Player" to="Lights" method="_on_player_notice_shadow_color"]
+[connection signal="notice_shadow_color" from="Player" to="Player/RayCast2D" method="_on_player_notice_shadow_color"]
+[connection signal="notice_collision_ability_bounce" from="Player/RayCast2D" to="bounce_obj_node" method="_on_ray_cast_2d_notice_collision_ability_bounce"]
+[connection signal="notice_collision_ability_move" from="Player/RayCast2D" to="move_obj_node" method="_on_ray_cast_2d_notice_collision_ability_move"]
+[connection signal="notice_collision_ability_water" from="Player/RayCast2D" to="water_obj_node" method="_on_ray_cast_2d_notice_collision_ability_water"]
+[connection signal="enter_damage_zone" from="damage_zone" to="CanvasLayer/in_game_ui" method="_on_damage_zone_enter_damage_zone"]
+[connection signal="enter_kill_zone" from="damage_zone" to="Player" method="_on_damage_zone_enter_kill_zone"]
+[connection signal="enter_kill_zone" from="Killzone" to="Player" method="_on_killzone_enter_kill_zone"]
+
+[editable path="move_obj_node/move_obj"]
+[editable path="move_obj_node/move_obj2"]
+[editable path="move_obj_node/move_obj3"]
+[editable path="move_obj_node/move_obj4"]
+[editable path="water_obj_node/water_obj"]
+[editable path="water_obj_node/water_obj2"]
+[editable path="water_obj_node/water_obj3"]
+[editable path="bounce_obj_node/bounce_obj"]
+[editable path="bounce_obj_node/bounce_obj2"]
+[editable path="bounce_obj_node/bounce_obj3"]

@@ -44,13 +44,13 @@ func reset_scene():
 
 
 func _on_change_level_enter_change_area():
-	get_tree().change_scene_to_file("res://src/scene/level1.tscn")
+	get_tree().change_scene_to_file("res://src/scene/level2.tscn")
 
 
 
 ### heart
 func change_heart_available():
-	if Global.level1_heart[1]:
+	if Global.level2_heart[1]:
 		heart.is_get_heart = false
 	else:
 		heart.is_get_heart = true
@@ -59,6 +59,6 @@ func change_heart_available():
 		
 
 func _on_heart_1_notice_get_heart():
-	Global.level1_heart[1] = false
+	Global.level2_heart[1] = false
 	heart.is_get_heart = true
 	in_game_ui.update_item_heart()

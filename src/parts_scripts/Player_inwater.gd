@@ -57,6 +57,9 @@ func _physics_process(delta: float):
 
 
 func move_func(delta: float) -> void:
+	# water_area only
+	is_enter_water = true
+	
 	if is_enter_water:
 		water_move(delta)
 	elif is_enter_bounce:

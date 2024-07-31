@@ -30,7 +30,7 @@ var float_gravity: float = -700.0
 # ability bounce
 var is_enter_bounce: bool = false
 var is_bounce_wakeup: bool = false
-var bounce_force: float = -700.0
+var bounce_force: float = 700.0
 var bounce_timer: float = 0.0
 var boucne_dulation: float = 0.1
 
@@ -103,7 +103,7 @@ func water_move(delta: float) -> void:
 
 func bounce_move(delta: float) -> void:
 	if is_bounce_wakeup:	
-		velocity.y = bounce_force
+		velocity.x = 50000
 		bounce_timer = boucne_dulation
 	else:
 		if bounce_timer > 0:

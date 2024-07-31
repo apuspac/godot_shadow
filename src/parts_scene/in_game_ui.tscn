@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://db8rp07qo78j7"]
+[gd_scene load_steps=18 format=3 uid="uid://db8rp07qo78j7"]
 
 [ext_resource type="Script" path="res://src/parts_scripts/in_game_ui.gd" id="1_k3wkj"]
 [ext_resource type="Texture2D" uid="uid://cmfphltb6qsyx" path="res://assets/sprites/heart.png" id="2_ikc5h"]
+[ext_resource type="Texture2D" uid="uid://bgt8vss6savwd" path="res://assets/sprites/heat_feedback.png" id="3_d22bi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1girs"]
 atlas = ExtResource("2_ikc5h")
@@ -40,6 +41,63 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qksc3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahopl"]
+atlas = ExtResource("3_d22bi")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfrsq"]
+atlas = ExtResource("3_d22bi")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3dnh"]
+atlas = ExtResource("3_d22bi")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulpcg"]
+atlas = ExtResource("3_d22bi")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhah7"]
+atlas = ExtResource("3_d22bi")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyre6"]
+atlas = ExtResource("3_d22bi")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqttd"]
+atlas = ExtResource("3_d22bi")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_065k7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahopl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfrsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3dnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulpcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhah7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyre6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqttd")
 }],
 "loop": true,
 "name": &"default",
@@ -98,3 +156,10 @@ autoplay = "default"
 position = Vector2(81, 6)
 sprite_frames = SubResource("SpriteFrames_pvi80")
 autoplay = "default"
+
+[node name="HEART" type="Node" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HEART"]
+position = Vector2(16, -31)
+sprite_frames = SubResource("SpriteFrames_065k7")
+frame_progress = 0.517128

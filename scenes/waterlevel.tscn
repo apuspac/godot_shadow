@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://pxx3b8pwankl"]
+[gd_scene load_steps=6 format=3 uid="uid://cl1lsrmyonff6"]
 
 [ext_resource type="PackedScene" uid="uid://cm4nkeefddh8a" path="res://src/parts_scene/player.tscn" id="1_m1tty"]
 [ext_resource type="Texture2D" uid="uid://da1ju62ysrvm4" path="res://assets/sprites/world_tileset.png" id="2_02wir"]
-[ext_resource type="PackedScene" path="res://src/parts_scene/parallax_background.tscn" id="3_5merg"]
+[ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="3_5merg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_031gq"]
 texture = ExtResource("2_02wir")
