@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dimtg1quoo4i0"]
+[gd_scene load_steps=34 format=3 uid="uid://dimtg1quoo4i0"]
 
 [ext_resource type="Script" path="res://src/scripts/level_select.gd" id="1_on58e"]
 [ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="2_lpss3"]
@@ -10,8 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="6_vkb15"]
 [ext_resource type="AudioStream" uid="uid://og3bov5p2j6w" path="res://assets/brackeys_sample/sounds/power_up.wav" id="7_ni0ny"]
 [ext_resource type="PackedScene" uid="uid://begksdmwywrf8" path="res://scenes/heart.tscn" id="7_wm7xq"]
+[ext_resource type="FontFile" uid="uid://de2qg3pb5hml0" path="res://assets/brackeys_sample/fonts/PixelOperator8-Bold.ttf" id="10_f2yid"]
 [ext_resource type="Script" path="res://src/parts_scripts/light_2d_node.gd" id="10_hw5yo"]
+[ext_resource type="Texture2D" uid="uid://ijuqkl4baap5" path="res://assets/sprites/platforms.png" id="11_jaq3p"]
 [ext_resource type="Script" path="res://src/parts_scripts/light_2d.gd" id="11_ssqyu"]
+[ext_resource type="Texture2D" uid="uid://cg4ywrjdfcs23" path="res://assets/sprites/enemy.png" id="12_5jpeb"]
+[ext_resource type="PackedScene" uid="uid://dk6e3la81fpqv" path="res://scenes/platform.tscn" id="15_qqfon"]
+[ext_resource type="Texture2D" uid="uid://dsviydktfrrgv" path="res://assets/sprites/shadow_change.png" id="17_4jap0"]
 
 [sub_resource type="Gradient" id="Gradient_1s3uk"]
 offsets = PackedFloat32Array(0.228739, 1)
@@ -25,6 +30,199 @@ fill_to = Vector2(0.876068, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpxim"]
 size = Vector2(104, 107)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cpemv"]
+font = ExtResource("10_f2yid")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdaal"]
+atlas = ExtResource("12_5jpeb")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mnej"]
+atlas = ExtResource("12_5jpeb")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vsbn"]
+atlas = ExtResource("12_5jpeb")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2jtt"]
+atlas = ExtResource("12_5jpeb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rnwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdaal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mnej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vsbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2jtt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_kmwhq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_g0p6x"]
+resource_name = "move"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(144, 3), Vector2(144, 96), Vector2(144, 96)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7itvl"]
+_data = {
+"RESET": SubResource("Animation_kmwhq"),
+"move": SubResource("Animation_g0p6x")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfh3p"]
+texture = ExtResource("17_4jap0")
+0:0/0 = 0
+1:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ctb47"]
+sources/0 = SubResource("TileSetAtlasSource_bfh3p")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6n2p"]
+texture = ExtResource("17_4jap0")
+0:0/0 = 0
+1:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_buv88"]
+sources/0 = SubResource("TileSetAtlasSource_l6n2p")
 
 [node name="level select" type="Node2D"]
 script = ExtResource("1_on58e")
@@ -117,11 +315,6 @@ position = Vector2(829, 449)
 [node name="item_collect" parent="." instance=ExtResource("6_k3i3o")]
 position = Vector2(457, 359)
 
-[node name="ColorRect" type="ColorRect" parent="item_collect"]
-offset_right = 106.0
-offset_bottom = 109.0
-metadata/_edit_use_anchors_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="item_collect"]
 position = Vector2(54, 55)
 shape = SubResource("RectangleShape2D_vpxim")
@@ -133,9 +326,22 @@ offset_top = -48.0
 offset_right = 48.0
 offset_bottom = -25.0
 text = "CLEAR"
+label_settings = SubResource("LabelSettings_cpemv")
 
 [node name="CLEAR_Sound" type="AudioStreamPlayer" parent="item_collect"]
 stream = ExtResource("7_ni0ny")
+
+[node name="Platforms" type="Sprite2D" parent="item_collect"]
+position = Vector2(53, 78)
+scale = Vector2(3.205, 3.205)
+texture = ExtResource("11_jaq3p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="item_collect"]
+position = Vector2(50, 26)
+sprite_frames = SubResource("SpriteFrames_5rnwc")
+autoplay = "default"
+frame = 2
+frame_progress = 0.512752
 
 [node name="change_level" parent="." instance=ExtResource("5_a2xnx")]
 position = Vector2(1112, 348)
@@ -149,6 +355,28 @@ position = Vector2(1506, 284)
 [node name="Heart" parent="." instance=ExtResource("7_wm7xq")]
 visible = false
 position = Vector2(-362, -11)
+
+[node name="Platform5" parent="." instance=ExtResource("15_qqfon")]
+visible = false
+position = Vector2(144, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform5"]
+libraries = {
+"": SubResource("AnimationLibrary_7itvl")
+}
+autoplay = "move"
+
+[node name="TileMap2" type="TileMap" parent="."]
+position = Vector2(828, 216)
+tile_set = SubResource("TileSet_ctb47")
+format = 2
+layer_0/tile_data = PackedInt32Array(262172, 262144, 2, 327708, 262144, 3, 393244, 262144, 4, 458780, 262144, 5, 524316, 262144, 6, 589852, 262144, 7, 655388, 262144, 8, 720924, 262144, 9, 262173, 327680, 2, 327709, 327680, 3, 393245, 327680, 4, 458781, 327680, 5, 524317, 327680, 6, 589853, 327680, 7, 655389, 327680, 8, 720925, 327680, 9, 262174, 393216, 2, 327710, 393216, 3, 393246, 393216, 4, 458782, 393216, 5, 524318, 393216, 6, 589854, 393216, 7, 655390, 393216, 8, 720926, 393216, 9, 262175, 458752, 2, 327711, 458752, 3, 393247, 458752, 4, 458783, 458752, 5, 524319, 458752, 6, 589855, 458752, 7, 655391, 458752, 8, 720927, 458752, 9)
+
+[node name="TileMap3" type="TileMap" parent="."]
+position = Vector2(828, 216)
+tile_set = SubResource("TileSet_buv88")
+format = 2
+layer_0/tile_data = PackedInt32Array(196650, 262144, 3, 262186, 262144, 4, 327722, 262144, 5, 393258, 262144, 6, 458794, 262144, 7, 524330, 262144, 8, 589866, 262144, 9, 196651, 327680, 3, 262187, 327680, 4, 327723, 327680, 5, 393259, 327680, 6, 458795, 327680, 7, 524331, 327680, 8, 589867, 327680, 9, 196652, 393216, 3, 262188, 393216, 4, 327724, 393216, 5, 393260, 393216, 6, 458796, 393216, 7, 524332, 393216, 8, 589868, 393216, 9, 196653, 458752, 3, 262189, 458752, 4, 327725, 458752, 5, 393261, 458752, 6, 458797, 458752, 7, 524333, 458752, 8, 589869, 458752, 9)
 
 [connection signal="jump_level_select" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_level_select"]
 [connection signal="jump_main_menu" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_main_menu"]

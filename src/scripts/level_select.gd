@@ -3,7 +3,14 @@ extends Node2D
 @onready var pause_panel = $CanvasLayer/Pause_panel
 @onready var heart1 = $Heart
 @onready var clear_label = $item_collect/Label
+
+@onready var tile2 = $TileMap2		
+@onready var tile3 = $TileMap3
+
+
+
 var paused = false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -51,6 +58,19 @@ func _on_change_level_3_enter_change_area():
 	get_tree().change_scene_to_file("res://src/scene/level3.tscn")
 
 
-func _on_item_collect_enter_collect_true():
+func _on_item_collect_enter_collect_true(label_text: String):
 	heart1.visible = true
+	clear_label.text = label_text
 	clear_label.visible = true
+	change_tilemap_visible()
+
+func change_tilemap_visible():
+	if Global.progress == 0:
+		tile2.visible = true
+		tile3.visible = true
+	if Global.progress == 1:
+		tile2.visible = false
+		tile3.visible = true
+	if Global.progress == 2:
+		tile2.visible = false
+		tile3.visible = false

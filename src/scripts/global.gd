@@ -1,11 +1,12 @@
 extends Node2D
 
 # player
-var player_item_heart = 0
+var player_item_heart: Array[int] = [0, 0, 0]
 var player_HP = 5
+var progress = 0
 
 func add_player_item_heart() -> void:
-	player_item_heart += 1
+	player_item_heart[progress] += 1
 
 func retry() -> void:
 	player_HP = 5
