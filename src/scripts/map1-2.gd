@@ -49,7 +49,7 @@ func _on_change_level_enter_change_area():
 
 ### heart
 func change_heart_available():
-	if Global.level1_heart[0]:
+	if Global.level1_heart[1]:
 		heart.is_get_heart = false
 	else:
 		heart.is_get_heart = true
@@ -58,5 +58,5 @@ func change_heart_available():
 		
 
 func _on_heart_1_notice_get_heart():
-	Global.level1_heart[0] = false
+	Global.level1_heart[1] = false
 	heart.is_get_heart = true

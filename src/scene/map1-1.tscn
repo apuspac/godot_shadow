@@ -292,10 +292,10 @@ offset_bottom = 1.0
 visible = false
 
 [node name="background" type="ColorRect" parent="."]
-offset_left = -1543.0
-offset_top = -1752.0
-offset_right = 5340.0
-offset_bottom = 2032.0
+offset_left = -1019.0
+offset_top = -2065.0
+offset_right = 5864.0
+offset_bottom = 1719.0
 color = Color(0.14902, 0.14902, 0.14902, 0.65098)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -316,12 +316,11 @@ script = ExtResource("6_8reci")
 position = Vector2(1299, 39)
 
 [node name="Lights" type="Node2D" parent="."]
-visible = false
 script = ExtResource("7_2u78v")
 
 [node name="light2d" parent="Lights" instance=ExtResource("7_bfjxd")]
-position = Vector2(626, -18)
-scale = Vector2(11.9336, 7.07422)
+position = Vector2(770, 14)
+scale = Vector2(13.489, 7.996)
 color = Color(1, 1, 1, 0)
 shadow_color = Color(0.184314, 0.603922, 0.603922, 1)
 texture_scale = 2.29

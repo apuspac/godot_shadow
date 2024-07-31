@@ -1,5 +1,7 @@
 extends Node2D
 @onready var pause_panel = $CanvasLayer/Pause_panel
+@onready var in_game_ui = $CanvasLayer/in_game_ui
+
 @onready var heart = $Heart/Heart1
 var paused = false
 
@@ -60,3 +62,4 @@ func change_heart_available():
 func _on_heart_1_notice_get_heart():
 	Global.level1_heart[0] = false
 	heart.is_get_heart = true
+	in_game_ui.update_item_heart()

@@ -56,3 +56,8 @@ func _on_change_level_3_enter_change_area():
 	Global.player_posision_level1 = Vector2($Player.position.x - 50, $Player.position.y)
 	get_tree().change_scene_to_file("res://src/scene/map1-3.tscn")
 
+
+
+func _on_change_level_4_enter_change_area():
+	Global.player_posision_level1 = Vector2($Player.position.x + 50, $Player.position.y)
+	get_tree().change_scene_to_file("res://src/scene/level_select.tscn")

@@ -7,7 +7,7 @@ func _ready():
 	add_to_group("Lights")
 	light_id = parent.add_unique_key()
 	parent.send_light_children(global_position, light_id)
-	print_debug(light_id)
+	#print_debug(light_id)
 
 
 func change_shadow_color(color: int):

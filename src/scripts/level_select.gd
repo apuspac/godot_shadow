@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var pause_panel = $Camera2D/Pause_panel
+@onready var pause_panel = $CanvasLayer/Pause_panel
 @onready var heart1 = $Heart
 @onready var clear_label = $item_collect/Label
 var paused = false
@@ -11,7 +11,6 @@ func _process(delta):
 		pause_menu()
 	if Input.is_action_just_pressed("Reset"):
 		reset_scene()
-
 
 func pause_menu():
 	if paused:

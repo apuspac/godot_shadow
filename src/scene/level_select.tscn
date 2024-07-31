@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dimtg1quoo4i0"]
+[gd_scene load_steps=16 format=3 uid="uid://dimtg1quoo4i0"]
 
 [ext_resource type="Script" path="res://src/scripts/level_select.gd" id="1_on58e"]
 [ext_resource type="PackedScene" uid="uid://cfuhms7e43ajn" path="res://src/parts_scene/parallax_background.tscn" id="2_lpss3"]
@@ -7,13 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cgi1p5hsqog2h" path="res://src/parts_scene/pause_panel.tscn" id="4_ql8de"]
 [ext_resource type="PackedScene" uid="uid://q541ngmlpbqg" path="res://src/parts_scene/change_level.tscn" id="5_a2xnx"]
 [ext_resource type="PackedScene" uid="uid://k7uxq387d5bu" path="res://src/parts_scene/item_collect.tscn" id="6_k3i3o"]
+[ext_resource type="PackedScene" uid="uid://db8rp07qo78j7" path="res://src/parts_scene/in_game_ui.tscn" id="6_vkb15"]
 [ext_resource type="AudioStream" uid="uid://og3bov5p2j6w" path="res://assets/brackeys_sample/sounds/power_up.wav" id="7_ni0ny"]
 [ext_resource type="PackedScene" uid="uid://begksdmwywrf8" path="res://scenes/heart.tscn" id="7_wm7xq"]
 [ext_resource type="Script" path="res://src/parts_scripts/light_2d_node.gd" id="10_hw5yo"]
 [ext_resource type="Script" path="res://src/parts_scripts/light_2d.gd" id="11_ssqyu"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpxim"]
-size = Vector2(104, 107)
 
 [sub_resource type="Gradient" id="Gradient_1s3uk"]
 offsets = PackedFloat32Array(0.228739, 1)
@@ -25,12 +23,30 @@ fill = 1
 fill_from = Vector2(0.525641, 0.538462)
 fill_to = Vector2(0.876068, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpxim"]
+size = Vector2(104, 107)
+
 [node name="level select" type="Node2D"]
 script = ExtResource("1_on58e")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_lpss3")]
 scale = Vector2(1.83, 1.83)
 transform = Transform2D(1.83, 0, 0, 1.83, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause_panel" parent="CanvasLayer" instance=ExtResource("4_ql8de")]
+visible = false
+offset_left = 1055.0
+offset_top = 448.0
+offset_right = 1352.0
+offset_bottom = 693.0
+
+[node name="in_game_ui" parent="CanvasLayer" instance=ExtResource("6_vkb15")]
+offset_left = 0.0
+offset_top = 2.0
+offset_right = 0.0
+offset_bottom = 2.0
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(828, 216)
@@ -46,48 +62,6 @@ position = Vector2(829, 449)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(829, 449)
-
-[node name="Pause_panel" parent="Camera2D" instance=ExtResource("4_ql8de")]
-visible = false
-
-[node name="item_collect" parent="." instance=ExtResource("6_k3i3o")]
-position = Vector2(457, 359)
-
-[node name="ColorRect" type="ColorRect" parent="item_collect"]
-offset_right = 106.0
-offset_bottom = 109.0
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="item_collect"]
-position = Vector2(54, 55)
-shape = SubResource("RectangleShape2D_vpxim")
-
-[node name="Label" type="Label" parent="item_collect"]
-visible = false
-offset_left = -1.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = -25.0
-text = "CLEAR"
-
-[node name="CLEAR_Sound" type="AudioStreamPlayer" parent="item_collect"]
-stream = ExtResource("7_ni0ny")
-
-[node name="change_level" parent="." instance=ExtResource("5_a2xnx")]
-position = Vector2(1112, 348)
-
-[node name="change_level2" parent="." instance=ExtResource("5_a2xnx")]
-position = Vector2(1281, 316)
-
-[node name="change_level3" parent="." instance=ExtResource("5_a2xnx")]
-position = Vector2(1506, 284)
-
-[node name="Heart" parent="." instance=ExtResource("7_wm7xq")]
-visible = false
-position = Vector2(-362, -11)
 
 [node name="Lights" type="Node2D" parent="."]
 script = ExtResource("10_hw5yo")
@@ -137,10 +111,49 @@ texture = SubResource("GradientTexture2D_80n3d")
 texture_scale = 3.02
 script = ExtResource("11_ssqyu")
 
-[connection signal="jump_level_select" from="Camera2D/Pause_panel" to="." method="_on_pause_panel_jump_level_select"]
-[connection signal="jump_main_menu" from="Camera2D/Pause_panel" to="." method="_on_pause_panel_jump_main_menu"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(829, 449)
+
+[node name="item_collect" parent="." instance=ExtResource("6_k3i3o")]
+position = Vector2(457, 359)
+
+[node name="ColorRect" type="ColorRect" parent="item_collect"]
+offset_right = 106.0
+offset_bottom = 109.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="item_collect"]
+position = Vector2(54, 55)
+shape = SubResource("RectangleShape2D_vpxim")
+
+[node name="Label" type="Label" parent="item_collect"]
+visible = false
+offset_left = -1.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = -25.0
+text = "CLEAR"
+
+[node name="CLEAR_Sound" type="AudioStreamPlayer" parent="item_collect"]
+stream = ExtResource("7_ni0ny")
+
+[node name="change_level" parent="." instance=ExtResource("5_a2xnx")]
+position = Vector2(1112, 348)
+
+[node name="change_level2" parent="." instance=ExtResource("5_a2xnx")]
+position = Vector2(1281, 316)
+
+[node name="change_level3" parent="." instance=ExtResource("5_a2xnx")]
+position = Vector2(1506, 284)
+
+[node name="Heart" parent="." instance=ExtResource("7_wm7xq")]
+visible = false
+position = Vector2(-362, -11)
+
+[connection signal="jump_level_select" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_level_select"]
+[connection signal="jump_main_menu" from="CanvasLayer/Pause_panel" to="." method="_on_pause_panel_jump_main_menu"]
+[connection signal="send_light_position" from="Lights" to="Player" method="_on_lights_send_light_position"]
 [connection signal="enter_collect_true" from="item_collect" to="." method="_on_item_collect_enter_collect_true"]
 [connection signal="enter_change_area" from="change_level" to="." method="_on_change_level_enter_change_area"]
 [connection signal="enter_change_area" from="change_level2" to="." method="_on_change_level_2_enter_change_area"]
 [connection signal="enter_change_area" from="change_level3" to="." method="_on_change_level_3_enter_change_area"]
-[connection signal="send_light_position" from="Lights" to="Player" method="_on_lights_send_light_position"]

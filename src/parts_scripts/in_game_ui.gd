@@ -34,6 +34,7 @@ func update_item_heart():
 		item_text += "♡"
 	
 	item_label.text = item_text
+	print("haert",Global.player_item_heart)
 
 
 
